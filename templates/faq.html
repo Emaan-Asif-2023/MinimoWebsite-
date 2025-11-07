@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ask Our Assistant | Minimo Cares</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #F3E8FF;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header */
+    .header {
+      background-color: #17021f;
+      height: 13vh;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .header img {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .header h1 {
+      color: white;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+
+    /* Container */
+    .container {
+      max-width: 700px;
+      background: #ffffff;
+      padding: 40px;
+      margin: 50px auto;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      color: #72107a;
+      margin-bottom: 10px;
+      font-size: 26px;
+    }
+
+    p {
+      color: #444;
+      font-size: 15px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: 1px solid #b890d8;
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+      transition: box-shadow 0.3s ease;
+    }
+
+    input[type="text"]:focus {
+      box-shadow: 0 0 6px rgba(114, 16, 122, 0.4);
+    }
+
+    button {
+      background-color: #5c030c;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      margin-top: 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background-color: #8b1a2b;
+      transform: scale(1.05);
+    }
+
+    /* Fancy Answer Box */
+    /* Elegant Answer Box */
+.answer {
+  position: relative;
+  margin-top: 35px;
+  background: #fff;  /* clean white base */
+  /*background: linear-gradient(135deg, #ffffff 0%, #f8e9ff 100%);  soft lilac tint */
+  background:#f0e1f7;
+  color: #2e003e;
+  padding: 25px;
+  text-align: left;
+  border-radius: 15px;
+  font-size: 17px;
+  line-height: 1.7;
+  box-shadow: 0 4px 15px rgba(184, 144, 216, 0.3);
+  border: 1px solid rgba(184, 144, 216, 0.4);
+  animation: fadeUp 0.6s ease-out;
+}
+
+/* Label before the answer */
+.answer::before {
+  content: "Assistant says:";
+  display: block;
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: #72107a;
+  opacity: 0.8;
+}
+
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+
+
+    .typing {
+  display: inline-block;
+  border-right: 3px solid rgba(114, 16, 122, 0.6);
+  white-space: normal;
+  overflow: hidden;
+  animation: typing 2.5s steps(40, end) forwards, blink 0.7s infinite;
+  word-wrap: break-word;
+}
+
+/* Updated animation */
+@keyframes typing {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 1000px; /* enough for long text */
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+
+    /* Footer */
+    .footer {
+      margin-top: 25px;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .footer a {
+      color: #72107a;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Back to Home link */
+    .back-home {
+      display: inline-block;
+      margin-top: 25px;
+      background-color: #7a5796;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-home:hover {
+      background-color: #a471c4;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <img src="{{ url_for('static', filename='minimo 2.png') }}" alt="Minimo Logo">
+    <h1>MINIMO CARES</h1>
+  </div>
+
+  <div class="container">
+    <h2>Ask Our Assistant</h2>
+    <p>Type your question below </p>
+
+    <form method="POST" action="/faq">
+      <input type="text" name="question" placeholder="Ask something..." required>
+      <button type="submit">Ask</button>
+    </form>
+
+    {% if question %}
+      <div class="answer">
+        <div class="typing">{{ answer|safe }}</div>
+      </div>
+    {% endif %}
+
+    <div class="footer">
+      Need more help? <a href="mailto:minimocares@gmail.com">Contact us directly</a>.
+    </div>
+
+    <a href="/home" class="back-home">← Back to Home</a>
+  </div>
+</body>
+</html>

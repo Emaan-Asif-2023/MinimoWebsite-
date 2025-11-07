@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Climate Change Awareness and Plantation Drive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #F3E8FF;
+      color: #2C003E;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    .header {
+      background-color: #17021f;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 15px 25px;
+    }
+
+    .header img {
+      height: 45px;
+      width: 45px;
+      border-radius: 50%;
+      margin-right: 12px;
+    }
+
+    .header h1 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+
+    /* Main Section */
+    .project-section {
+      max-width: 1000px;
+      margin: 50px auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 40px;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .project-section h2 {
+      color: #72107a;
+      font-size: 26px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .intro-text {
+      text-align: justify;
+      margin-bottom: 30px;
+      font-size: 16px;
+      color: #3b0048;
+    }
+
+    /* Image Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(123, 0, 158, 0.3);
+    }
+
+    /* Details section */
+    .details {
+      background-color: #EADAFB;
+      border-radius: 12px;
+      padding: 22px 25px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 18px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    .details .label {
+      font-weight: 700;
+      color: #4B007D;
+      font-size: 15px;
+      padding-top: 3px;
+    }
+
+    .details .value {
+      color: #2C003E;
+      font-size: 15px;
+      text-align: left;
+    }
+
+    .details .value p {
+      margin: 0 0 10px 0;
+    }
+
+    .details .value .lead {
+      font-weight: 600;
+      color: #3b0048;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    /* Back button */
+    .back-btn {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #5c030c;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #9B2335;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #17021f;
+      color: white;
+      font-size: 14px;
+      margin-top: 50px;
+      animation: fadeInUp 1.5s ease-in-out;
+    }
+
+    @media (max-width: 720px) {
+      .details {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <img src="{{ url_for('static', filename='minimo 2.png') }}" alt="Logo">
+    <h1>MINIMO CARES</h1>
+  </div>
+
+  <!-- Main Project Section -->
+  <div class="project-section">
+    <h2>Climate Change Awareness and Plantation Drive – The Citizens Foundation School, Kohrian</h2>
+
+    <p class="intro-text">
+      Our team visited The Citizens Foundation School, Kohrian as part of our Climate Change Awareness Initiative, a program dedicated to educating young minds about pressing environmental issues and encouraging sustainable, community-driven actions. During the session, we engaged with students to discuss the fundamentals of climate change; its causes, global and local impacts, and the importance of adopting eco-friendly practices in daily life. We emphasized how small lifestyle changes, such as conserving water, reducing waste, and planting trees, can collectively make a significant difference in combating climate challenges.
+      The highlight of the visit was an organized plantation drive, where students enthusiastically participated in planting saplings within their school premises. Our team guided them through proper plantation techniques, explained the importance of native species, and demonstrated methods for effective post-plantation care to ensure long-term growth and sustainability.
+      Beyond the practical activity, we aimed to inspire a sense of environmental stewardship among the students—helping them realize their role as future changemakers capable of protecting and preserving their environment. This collaborative effort not only promoted awareness but also fostered a spirit of responsibility, teamwork, and hope. The event served as a meaningful reminder that even the smallest, consistent actions can collectively strengthen ecological resilience and pave the way for a greener, healthier planet for generations to come.
+    </p>
+
+    <!-- Image Gallery -->
+    <div class="gallery">
+      {% for i in range(1, 25) %}
+        <img src="{{ url_for('static', filename='plantation' ~ i ~ '.jpg') }}" alt="Plantation Activity {{ i }}">
+      {% endfor %}
+    </div>
+
+    <!-- Details Section (polished) -->
+    <div class="details">
+      <div class="label">Venue</div>
+      <div class="value">
+        <span class="lead">The Citizens Foundation – Kohrian Campus</span>
+        <p>On-campus plantation area and surrounding compound. Coordinated with school administration for access and student participation.</p>
+      </div>
+
+      <div class="label">Objective</div>
+      <div class="value">
+        <span class="lead">Awareness + Capacity Building</span>
+        <p>To educate students on climate change impacts, encourage environmentally responsible behaviour, and provide practical experience through a guided plantation activity that reinforces long-term care and maintenance of green spaces.</p>
+      </div>
+
+      <div class="label">Scope</div>
+      <div class="value">
+        <span class="lead">Target Group & Activities</span>
+        <p>Primary: school students and teachers. Activities included an interactive presentation, a hands-on plantation drive, and a short practical workshop on sapling care and water-wise maintenance.</p>
+      </div>
+
+      <div class="label">Outcome</div>
+      <div class="value">
+        <span class="lead">Immediate & Long-term Impact</span>
+        <p>Immediate: increased student engagement and planting of multiple native saplings across the school campus. Long-term: strengthened environmental stewardship and a foundation for follow-up sustainability projects and student-led initiatives.</p>
+      </div>
+    </div>
+
+    <a href="/home" class="back-btn">← Back to Home</a>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Minimo Cares | 2025
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Minimo Cares</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <a href="/faq" class="faq-button" title="Ask Our Assistant"> Ask Assistant</a>
+
+  <style>
+    body {
+      margin: 0;
+      background-color: #F3E8FF;
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+    }
+    .faq-button {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    background-color: #72107a;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    font-size: 14px;
+    transition: all 0.3s ease;
+    z-index: 200;
+  }
+
+  .faq-button:hover {
+    background-color: #9b59b6;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  }
+
+    /* Header */
+    .header {
+      height: 13vh;
+      background-color: #17021f;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .header img {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .header h1 {
+      color: white;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+    /* Top-right buttons container */
+    .top-right-buttons {
+    position: absolute;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 100;
+}
+
+/* Join Us button */
+.join-btn {
+  background-color: #5c030c; /* Burgundy */
+  color: white;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.join-btn:hover {
+  background-color: #8b1a2b;
+  transform: scale(1.05);
+}
+
+/* Dropdown Menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #b890d8; /* Mauve */
+  color: white;
+  padding: 10px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.dropbtn:hover {
+  background-color: #a471c4;
+}
+
+/* Dropdown content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f4ebfa;
+  min-width: 220px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  padding: 10px 0;
+  z-index: 1;
+}
+
+.dropdown-content p {
+  color: #4b007d;
+  padding: 8px 16px;
+  margin: 0;
+  font-size: 14px;
+  text-align: left;
+}
+
+.dropdown-content p:hover {
+  background-color: #e2d2f3;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/* Make Helpline dropdown scrollable */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f4ebfa;
+  min-width: 220px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  padding: 10px 0;
+  z-index: 1;
+
+  /* Scroll settings */
+  max-height: 200px;      /* Limit visible height */
+  overflow-y: auto;       /* Enable scroll up/down */
+  scrollbar-width: thin;  /* Firefox scroll look */
+  scrollbar-color: #b890d8 #f4ebfa;
+}
+
+/* Optional: Customize scrollbar for Chrome/Safari */
+.dropdown-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+  background: #f4ebfa;
+  border-radius: 10px;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+  background-color: #b890d8;
+  border-radius: 10px;
+}
+
+
+
+    /* Container for content and image */
+    .main-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 40px 80px;
+    }
+
+    /* Left section: About + Mission text */
+    .text-section {
+      width: 65%;
+    }
+
+    .text-section h2 {
+      color: #72107a;
+      font-size: 24px;
+      margin-top: 0;
+    }
+
+    .text-section p {
+      font-size: 16px;
+      text-align: justify;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* Image on the right side */
+    .image-section {
+      width: 20%;
+      background: url("{{ url_for('static', filename='aboutus_pic.jpg') }}") center/cover no-repeat;
+      border-radius: 10px;
+      height: 400px;
+      margin-left: 20px;
+    }
+
+    /* Button styling */
+    .about-btn {
+      display: block;
+      background-color: #5c030c;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      margin: 25px auto; /* centers button horizontally */
+      width: fit-content;
+      transition: 0.3s ease;
+    }
+
+    .about-btn:hover {
+      background-color: #9B2335;
+    }
+
+    /* Footer */
+    /* Footer Styles */
+.footer {
+  background-color: #17021f;
+  color: white;
+  padding: 50px 20px 20px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 30px;
+}
+
+.footer-brand {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer-brand h3 {
+  color: #d9b3ff;
+  margin-bottom: 12px;
+  font-size: 22px;
+}
+
+.footer-brand .slogan {
+  font-style: italic;
+  color: #e6ccff;
+  font-size: 14px;
+}
+
+.footer-contact {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-contact h4 {
+  color: #d9b3ff;
+  margin-bottom: 10px;
+}
+
+.footer-contact p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.footer-contact a {
+  color: #f3e8ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+  color: #b266ff;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  margin-top: 30px;
+  padding-top: 20px;
+  font-size: 13px;
+  color: #ccc;
+}
+
+.footer-bottom a {
+  color: #ccc;
+  text-decoration: none;
+  margin: 0 8px;
+  transition: color 0.3s ease;
+}
+
+.footer-bottom a:hover {
+  color: white;
+}
+
+
+    /* Team Section */
+    .team-section {
+      background-color: #17021f;
+      padding: 60px 20px;
+      text-align: center;
+      color: white;
+      animation: fadeInUp 1.2s ease-in-out;
+    }
+
+    .team-section h2 {
+      font-size: 28px;
+      margin-bottom: 50px;
+      letter-spacing: 2px;
+      color: #fff;
+      position: relative;
+    }
+
+    .team-section h2::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: #9b59b6;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Team Members Grid */
+   .team-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .team-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .team-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+
+
+
+    .team-member {
+      width: 180px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .team-member img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #9b59b6;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .team-member:hover {
+      transform: translateY(-8px);
+    }
+
+    .team-member:hover img {
+      transform: scale(1.05);
+    }
+
+    .team-member h3 {
+      font-size: 16px;
+      color: #ffffff;
+      margin-bottom: 5px;
+    }
+
+    .team-member p {
+      font-size: 14px;
+      color: #d3bafc;
+      margin: 0;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+    .team-member {
+      width: 45%;
+    }
+  }
+
+    @media (max-width: 480px) {
+    .team-member {
+      width: 80%;
+    }
+  }
+    /* Projects Section */
+.projects-section {
+  background-color: #EADAFB;
+  padding: 60px 20px;
+  text-align: center;
+  color: #4B007D;
+}
+
+.projects-section h2 {
+  font-size: 28px;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+.carousel {
+  position: relative;
+  max-width: 70%;
+  margin: auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.slides {
+  display: none;
+  animation: fade 1.5s ease-in-out;
+}
+
+.slides img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.slides h3 {
+  margin-top: 10px;
+  color: #4B007D;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.slides a {
+  text-decoration: none;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 12px;
+  background-color: #9b59b6;
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.prev:hover, .next:hover {
+  background-color: #72107a;
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+@keyframes fade {
+  from { opacity: 0.4 }
+  to { opacity: 1 }
+}
+
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <img src="{{ url_for('static', filename='minimo 2.png') }}" alt="Minimo Logo">
+    <h1>MINIMO CARES</h1>
+  </div>
+
+  <!-- Join Us & Helpline Section -->
+<div class="top-right-buttons">
+  <a href="/volunteerform" class="join-btn">Join Us</a>
+
+  <div class="dropdown">
+    <button class="dropbtn">Helpline Numbers ▾</button>
+    <div class="dropdown-content">
+      <p>Police: 15</p>
+      <p>Ambulance: 115</p>
+      <p>Child Protection Welfare Bureau: 1121</p>
+      <p>Rescue Service: 1122, 042-99231701-2</p>
+      <p>Edhi Foundation: 115</p>
+      <p>Edhi Ambulance: 042-37847050, 042-37847060</p>
+      <p>Ambulance Halal-e-Ahmar: 6304702, 1030</p>
+      <p>Punjab Women Helpline:  1043</p>
+      <p>Fire Brigade: 16</p>
+      <p>Punjab Youth Help Line: 0800-12145</p>
+      <p>Provincial Disaster Management Authority: 1129 </p>
+      <p>Punjab Health Line (PHL): 0800-99000</p>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Text section (About + Mission) -->
+    <div class="text-section">
+      <h2>ABOUT US</h2>
+      <p>
+        We are a group of passionate individuals united by a shared purpose:
+        to create change that truly matters. Coming from diverse backgrounds,
+        we work together to design and drive projects that inspire, uplift,
+        and leave a lasting positive impact. Guided by empathy, responsibility,
+        and innovation, our mission is to contribute towards a better world
+        and a brighter Pakistan, where progress is sustainable, communities thrive,
+        and every effort reflects our belief that real change begins when people
+        come together with heart and vision.
+      </p>
+      <a href="/aboutus" class="about-btn">View More</a>
+
+      <h2>OUR MISSION</h2>
+      <p>
+        We believe in driving projects that truly make a difference —
+        projects that inspire, uplift, and create a positive, lasting impact.
+        Our mission is to contribute towards building a better Pakistan,
+        where innovation, responsibility, and care come together to shape
+        a brighter future for everyone. With every step we take, our focus
+        remains on sustainability, community growth, and meaningful change,
+        because real progress begins when efforts are made with heart.
+      </p>
+      <a href="/ourmission" class="about-btn">View More</a>
+    </div>
+
+    <!-- Image section (right side) -->
+    <div class="image-section"></div>
+  </div>
+
+
+
+  <!-- Meet Our Team Section -->
+  <div class="team-section">
+  <h2>MEET OUR TEAM</h2>
+
+  <div class="team-container">
+    <div class="team-member">
+      <img src="{{ url_for('static', filename='minahil.jpg') }}" alt="Member 1">
+      <h3>Minahil Rashid</h3>
+      <p>Founder</p>
+    </div>
+
+    <div class="team-member">
+      <img src="{{ url_for('static', filename='hashir.jpg') }}" alt="Member 2">
+      <h3>Muhammad Hashir</h3>
+      <p>Founder</p>
+    </div>
+    <div class="team-member">
+      <img src="{{ url_for('static', filename='hania.jpg') }}" alt="Member 3">
+      <h3>Hania Farooq</h3>
+      <p>Public Health Liason</p>
+    </div>
+    <div class="team-member">
+      <img src="{{ url_for('static', filename='emaan5.jpg') }}" alt="Member 4">
+      <h3>Emaan Asif</h3>
+      <p>Web Development Lead</p>
+    </div>
+
+    <div class="team-member">
+      <img src="{{ url_for('static', filename='ayesha.jpg') }}" alt="Member 5">
+      <h3>Ayesha Saeed</h3>
+      <p>Media Head</p>
+    </div>
+
+    <div class="team-member">
+      <img src="{{ url_for('static', filename='hanfa.jpg') }}" alt="Member 6">
+      <h3>Hanfa Ahsan</h3>
+      <p>Media Head</p>
+    </div>
+
+
+  </div>
+</div>
+  <!-- Projects Carousel Section -->
+<div class="projects-section">
+  <h2>OUR PROJECTS</h2>
+
+  <div class="carousel">
+    <div class="slides fade">
+      <img src="{{ url_for('static', filename='project1.jpg') }}" alt="Project 1">
+      <a href="/project1"><h3>Climate change awareness and plantation</h3></a>
+    </div>
+
+    <div class="slides fade">
+      <img src="{{ url_for('static', filename='project2.jpg') }}" alt="Project 2">
+      <a href="/project2"><h3>Career Counselling Session</h3></a>
+    </div>
+
+    <div class="slides fade">
+      <img src="{{ url_for('static', filename='project3.jpg') }}" alt="Project 3">
+      <a href="/project3"><h3>Kohrian Plantation Drive</h3></a>
+    </div>
+
+    <div class="slides fade">
+      <img src="{{ url_for('static', filename='project4.jpg') }}" alt="Project 4">
+      <a href="/project4"><h3>Free Physical Therapy Session at Old Age Home</h3></a>
+    </div>
+    
+    <div class="slides fade">
+      <img src="{{ url_for('static', filename='project5.jpg') }}" alt="Project 5">
+      <a href="/project5"><h3>5th project</h3></a>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+</div>
+
+<script>
+let currentSlide = 0;
+let slides = document.querySelectorAll(".slides");
+let timer;
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.style.display = (i === index) ? "block" : "none";
+  });
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+  resetTimer();
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide(currentSlide);
+  resetTimer();
+}
+
+function resetTimer() {
+  clearTimeout(timer);
+  timer = setTimeout(nextSlide, 5000); // auto changes every 5s
+}
+
+// Initialize
+showSlide(currentSlide);
+resetTimer();
+
+// Button click handlers
+document.querySelector(".next").addEventListener("click", nextSlide);
+document.querySelector(".prev").addEventListener("click", prevSlide);
+</script>
+
+
+   <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h3>Minimo Cares</h3>
+      <p class="slogan">Creating change that truly matters</p>
+    </div>
+
+    <div class="footer-contact">
+      <h4>Contact us</h4>
+      <p>Email: <a href="mailto:minimocares@gmail.com">minimocares@gmail.com</a></p>
+      <p>Instagram: <a href="https://www.instagram.com/minimo_pk" target="_blank">@minimo_pk</a></p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Minimo Cares. All Rights Reserved.</p>
+    <p>Privacy Policy | Terms of Service
+  </div>
+</footer>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #F3E8FF;
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #2c2c2c;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Smooth fade-in animation */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Header */
+    .header {
+      height: 13vh;
+      background-color: #17021f;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    .header img {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .header h1 {
+      color: white;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+
+    /* About Section */
+    .about-section {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      animation: fadeInUp 1.2s ease-in-out;
+    }
+
+    .about-section h1 {
+      text-align: center;
+      font-size: 28px;
+      color: #72107a;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .about-section h1::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #72107a;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    .about-section p {
+      font-size: 16px;
+      margin-bottom: 20px;
+      text-align: justify;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .about-section p:nth-child(2) { animation-delay: 0.2s; }
+    .about-section p:nth-child(3) { animation-delay: 0.4s; }
+    .about-section p:nth-child(4) { animation-delay: 0.6s; }
+    .about-section p:nth-child(5) { animation-delay: 0.8s; }
+    .about-section p:nth-child(6) { animation-delay: 1s; }
+
+    /* Subtle hover effect */
+    .about-section:hover {
+      transform: translateY(-5px);
+      transition: 0.3s ease;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Footer style */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #17021f;
+      color: white;
+      font-size: 14px;
+      margin-top: 50px;
+      animation: fadeInUp 1.5s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <img src="{{ url_for('static', filename='minimo 2.png') }}" alt="Minimo Logo">
+    <h1>MINIMO CARES</h1>
+  </div>
+
+  <!-- About Section -->
+  <div class="about-section">
+    <h1><b>ABOUT US</b></h1>
+    <p>We are a group of passionate individuals who believe in one simple idea: together, we can make a difference. What started as a shared vision has grown into a collective movement of people dedicated to creating positive change that lasts.</p>
+    <p>United by our values of empathy, responsibility, and innovation, we work hand in hand to design and drive projects that inspire hope, uplift communities, and contribute to a better tomorrow. For us, this is more than just work—it’s our purpose.</p>
+    <p>Our team comes from diverse backgrounds, but we are bound by a common goal: to leave the world better than we found it. Whether through small initiatives or large-scale projects, every effort we make is guided by a deep commitment to people, progress, and impact.</p>
+    <p>We believe that real change begins with individuals who care and when those individuals come together, the impact multiplies. That’s what defines us. We are not just a team; we are a community of changemakers, driven by heart and vision, working towards a future full of opportunities, hope, and growth.</p>
+    <p>Empathy, responsibility, and innovation are at the heart of everything we do. These values guide our projects and ensure that our impact is meaningful and lasting.</p>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Minimo Cares | 2025
+  </div>
+</body>
+</html>
