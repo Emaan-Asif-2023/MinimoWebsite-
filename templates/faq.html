@@ -74,7 +74,7 @@
     }
 
     input[type="text"]:focus {
-      box-shadow: 0 0 6px rgba(114, 16, 122, 0.4);
+      box-shadow: 0 0 6px #D3D3D3;
     }
 
     button {
@@ -100,28 +100,27 @@
 .answer {
   position: relative;
   margin-top: 35px;
-  background: #fff;  /* clean white base */
-  /*background: linear-gradient(135deg, #ffffff 0%, #f8e9ff 100%);  soft lilac tint */
-  background:#f0e1f7;
+  background: #e3e1e1;
   color: #2e003e;
   padding: 25px;
   text-align: left;
   border-radius: 15px;
   font-size: 17px;
   line-height: 1.7;
-  box-shadow: 0 4px 15px rgba(184, 144, 216, 0.3);
-  border: 1px solid rgba(184, 144, 216, 0.4);
+  /*box-shadow: 0 4px 15px rgba(0,0,0,0.1);*/
+  /*border: 1px solid rgba(0,0,0,0.1);*/
   animation: fadeUp 0.6s ease-out;
 }
 
+
 /* Label before the answer */
 .answer::before {
-  content: "Assistant says:";
+  content: "";
   display: block;
   font-weight: 600;
   font-size: 15px;
   margin-bottom: 8px;
-  color: #72107a;
+  color: black;
   opacity: 0.8;
 }
 

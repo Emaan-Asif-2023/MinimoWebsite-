@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minimo Cares</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <a href="/faq" class="faq-button" title="Ask Our Assistant"> Ask Assistant</a>
@@ -17,8 +18,9 @@
     position: fixed;
     right: 25px;
     bottom: 25px;
-    background-color: #72107a;
-    color: white;
+    /*background-color: #72107a;*/
+    background-color: #e8a7fa;
+    color: #6b4a83;
     font-weight: 600;
     text-decoration: none;
     padding: 12px 18px;
@@ -30,7 +32,7 @@
   }
 
   .faq-button:hover {
-    background-color: #9b59b6;
+    background-color: #e8a7fa;
     transform: translateY(-3px);
     box-shadow: 0 6px 16px rgba(0,0,0,0.25);
   }
@@ -58,20 +60,20 @@
       letter-spacing: 1px;
       margin: 0;
     }
-    /* Top-right buttons container */
+
     .top-right-buttons {
     position: absolute;
-  top: 20px;
-  right: 30px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  z-index: 100;
-}
+    top: 20px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 100;
+    }
 
 /* Join Us button */
 .join-btn {
-  background-color: #5c030c; /* Burgundy */
+  background-color: #62595f; /* Burgundy */
   color: white;
   padding: 10px 18px;
   font-size: 14px;
@@ -82,7 +84,7 @@
 }
 
 .join-btn:hover {
-  background-color: #8b1a2b;
+  background-color: #9e8a97;
   transform: scale(1.05);
 }
 
@@ -93,7 +95,7 @@
 }
 
 .dropbtn {
-  background-color: #b890d8; /* Mauve */
+  background-color: #62595f;
   color: white;
   padding: 10px 16px;
   font-size: 14px;
@@ -105,7 +107,7 @@
 }
 
 .dropbtn:hover {
-  background-color: #a471c4;
+  background-color: #9e8a97;
 }
 
 /* Dropdown content */
@@ -113,7 +115,7 @@
   display: none;
   position: absolute;
   right: 0;
-  background-color: #f4ebfa;
+  background-color: #e9e4ed;
   min-width: 220px;
   box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
   border-radius: 8px;
@@ -229,6 +231,55 @@
       background-color: #9B2335;
     }
 
+.blog-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+  padding: 20px 0;
+}
+
+.blog-post {
+  background-color: #efe9f5;
+  border-radius: 10px;
+  padding: 15px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-post img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.blog-post h3 {
+  color: #4B007D;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.blog-post p {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.blog-post small {
+  font-size: 12px;
+  color: #6b4a83;
+}
+
+.blog-post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+
     /* Footer */
     /* Footer Styles */
 .footer {
@@ -312,7 +363,8 @@
 
     /* Team Section */
     .team-section {
-      background-color: #17021f;
+      /*background-color: #17021f; */
+      background-color: #6b4a83;
       padding: 60px 20px;
       text-align: center;
       color: white;
@@ -488,6 +540,24 @@
 }
 
 
+    /* Blog Section */
+.blog-section {
+  background-color: #afa5b8;
+  padding: 60px 20px;
+  text-align: center;
+  color: #4B007D;
+}
+/* Add spacing between sections */
+.main-content,          /* About + Mission */
+.team-section,
+.projects-section,
+.blog-section {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+
+
   </style>
 </head>
 <body>
@@ -581,19 +651,19 @@
     <div class="team-member">
       <img src="{{ url_for('static', filename='emaan5.jpg') }}" alt="Member 4">
       <h3>Emaan Asif</h3>
-      <p>Web Development Lead</p>
+      <p>Website Development Lead</p>
     </div>
 
     <div class="team-member">
       <img src="{{ url_for('static', filename='ayesha.jpg') }}" alt="Member 5">
       <h3>Ayesha Saeed</h3>
-      <p>Media Head</p>
+      <p>Media Team Head</p>
     </div>
 
     <div class="team-member">
       <img src="{{ url_for('static', filename='hanfa.jpg') }}" alt="Member 6">
       <h3>Hanfa Ahsan</h3>
-      <p>Media Head</p>
+      <p>Media Team Head</p>
     </div>
 
 
@@ -671,6 +741,36 @@ resetTimer();
 document.querySelector(".next").addEventListener("click", nextSlide);
 document.querySelector(".prev").addEventListener("click", prevSlide);
 </script>
+
+  <!-- Blog -->
+<!-- Blog -->
+<div class="blog-section">
+  <h2>BLOGs</h2>
+  <div class="blog-container">
+    <div class="blog-post">
+      <img src="{{ url_for('static', filename='blog1.jpg') }}" alt="Tree Plantation Drive">
+      <h3>Tree Plantation Drive</h3>
+      <p>We organized a successful tree plantation drive in Lahore, where 200 trees were planted by volunteers to promote a greener city...</p>
+      <small>Posted on 2025-11-01</small>
+    </div>
+
+    <div class="blog-post">
+      <img src="{{ url_for('static', filename='blog2.jpg') }}" alt="Health Awareness Session">
+      <h3>Health Awareness Session</h3>
+      <p>A session was conducted to raise awareness about public health and hygiene in the community, attended by over 100 residents...</p>
+      <small>Posted on 2025-11-05</small>
+    </div>
+
+    <div class="blog-post">
+      <img src="{{ url_for('static', filename='blog3.jpg') }}" alt="Career Counselling">
+      <h3>Career Counselling</h3>
+      <p>Our team held a career counselling session for high school students to help them choose the right academic paths and professional goals...</p>
+      <small>Posted on 2025-11-08</small>
+    </div>
+  </div>
+</div>
+
+
 
 
    <!-- Footer -->
