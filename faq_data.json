@@ -1,7 +1,50 @@
 [
-  {"question": "Where are you located?", "answer": "We are based in Karachi, Pakistan."},
-  {"question": "How can I donate?", "answer": "You can donate through our website's Donate page or by contacting us directly via email."},
-  {"question": "What is your mission?", "answer": "Our mission is to support underprivileged communities through education, food drives, and healthcare initiatives."},
-  {"question": "How can I volunteer?", "answer": "You can fill out our volunteer form available under the 'Join Us' section."},
-  {"question": "Who can join your foundation?", "answer": "Anyone who is passionate about helping others is welcome to join our foundation!"}
+  {
+    "question": "How can I donate?",
+    "variations": [
+      "How to donate?",
+      "Where to donate?",
+      "What is the donation process?",
+      "How can I give money?",
+      "Ways to donate",
+      "I want to donate"
+    ],
+    "answer": "You can donate through our official channels or contact us at minimocares@gmail.com."
+  },
+
+  {
+    "question": "What is your mission?",
+    "variations": [
+      "What does your foundation do?",
+      "What is your purpose?",
+      "What is the aim of Minimo Cares?",
+      "Your mission?",
+      "Why was Minimo Cares created?"
+    ],
+    "answer": "Our mission is to support underprivileged communities through education, food drives, and healthcare initiatives."
+  },
+
+  {
+    "question": "How can I volunteer?",
+    "variations": [
+      "How to volunteer?",
+      "I want to volunteer",
+      "Ways to volunteer",
+      "Can I join as a volunteer?",
+      "Join volunteer team"
+    ],
+    "answer": "You can fill out our volunteer form available under the 'Join Us' section."
+  },
+
+  {
+    "question": "Who can join your foundation?",
+    "variations": [
+      "Who can be part of your team?",
+      "Can anyone join?",
+      "Eligibility to join Minimo Cares",
+      "Can I join your foundation?",
+      "Who is allowed to join?"
+    ],
+    "answer": "Anyone who is passionate about helping others is welcome to join our foundation!"
+  }
 ]

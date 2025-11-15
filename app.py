@@ -108,7 +108,7 @@ def volunteer_form():
         institute = request.form.get('institute')
         reason = request.form.get('reason')
 
-        # --- Save volunteer info in database ---
+        # Save to DB
         conn = get_db_connection()
         cursor = conn.cursor()
         cursor.execute("""
@@ -118,14 +118,49 @@ def volunteer_form():
         conn.commit()
         conn.close()
 
-        # --- Send confirmation email ---
+        # Confirmation email to volunteer
         send_confirmation_email(email, name)
 
+        # NEW --- Forward details to admin
+        volunteer = {
+            "name": name,
+            "email": email,
+            "phone": phone,
+            "age": age,
+            "city": city,
+            "status": status,
+            "institute": institute,
+            "reason": reason
+        }
+        send_admin_notification(volunteer)
 
-        flash("Thank you for joining us! A confirmation email has been sent to your inbox.")
+        flash("Thank you for joining us! A confirmation email has been sent to you.")
         return redirect(url_for('home'))
 
     return render_template('form.html')
+
+def calculate_similarity(user_input, faq_question):
+    user_words = set(user_input.split())
+    q_words = set(faq_question.split())
+
+    # Word overlap score
+    overlap_score = len(user_words & q_words) / len(user_words | q_words)
+
+    # Partial word match: donation/donate, help/helping
+    partial_score = 0
+    for uw in user_words:
+        for qw in q_words:
+            if uw in qw or qw in uw:
+                partial_score += 0.1
+
+    # Keyword bonus scoring
+    keywords = ["donate", "help", "join", "volunteer", "mission"]
+    keyword_score = sum(0.15 for w in user_words if w in keywords)
+
+    # Weighted scoring
+    final_score = (overlap_score * 0.6) + (partial_score * 0.3) + (keyword_score * 0.1)
+
+    return final_score
 
 
 @app.route('/faq', methods=['GET', 'POST'])
@@ -145,38 +180,26 @@ def faq():
             best_score = 0
 
             for item in faq_data:
-                q_text = item["question"].lower()
-
-                # Token-based similarity (word overlap)
-                user_words = set(user_question.split())
-                q_words = set(q_text.split())
-
-                overlap = len(user_words & q_words)
-                total = len(user_words | q_words)
-                score = overlap / total if total else 0
+                score = calculate_similarity(user_question, item["question"].lower())
 
                 if score > best_score:
                     best_score = score
                     best_match = item
 
-            # Only answer if similarity is high enough
-            if best_score >= 0.4:  # ← adjust threshold here (0.4–0.5 recommended)
+            if best_score >= 0.35:   # threshold is now more flexible
                 answer = best_match["answer"]
             else:
-                # Fallback polite response
                 answer = (
-                    "Hmm, I’m not sure about that yet.<br>"
-                    "Please contact us at "
-                    "<a href='mailto:minimocares@gmail.com' style='color:#72107a; font-weight:600;'>"
-                    "minimocares@gmail.com</a> "
-                    "and our team will be happy to assist you!"
+                    "I’m not fully sure about this yet.<br>"
+                    "Kindly contact us at "
+                    "<a href='mailto:minimocares@gmail.com'>minimocares@gmail.com</a>"
                 )
 
     return render_template("faq.html", answer=answer, question=user_question)
 
 def send_confirmation_email(to_email, name):
     sender_email = "minimocares.noreply@gmail.com"
-    sender_password = "ebjspcyuaugqmmqq"
+    sender_password = "foohlopybcodvupi"
 
     subject = "Welcome to Minimo Cares!"
     body = f"""Dear {name},
@@ -202,6 +225,41 @@ The Minimo Cares Team
     except Exception as e:
         print(f" Failed to send email: {e}")
 
+def send_admin_notification(volunteer):
+    official_email = "minimocares@gmail.com"   # Your official inbox
+    sender_email = "minimocares.noreply@gmail.com"
+    sender_password = "foohlopybcodvupi"       # App password
+
+    subject = f"New Volunteer Registration: {volunteer['name']}"
+
+    body = f"""
+A new volunteer has submitted their information.
+
+Name: {volunteer['name']}
+Email: {volunteer['email']}
+Phone: {volunteer['phone']}
+Age: {volunteer['age']}
+City: {volunteer['city']}
+Status: {volunteer['status']}
+Institute: {volunteer['institute']}
+
+Reason for Volunteering:
+{volunteer['reason']}
+
+"""
+
+    msg = MIMEText(body)
+    msg["Subject"] = subject
+    msg["From"] = sender_email
+    msg["To"] = official_email
+
+    try:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+            server.login(sender_email, sender_password)
+            server.send_message(msg)
+        print(f"Admin notified at {official_email}")
+    except Exception as e:
+        print(f"Failed to send admin notification: {e}")
 
 if __name__ == "__main__":
     app.run(debug=True)

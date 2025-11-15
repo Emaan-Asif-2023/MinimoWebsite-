@@ -70,11 +70,12 @@
       border-radius: 8px;
       font-size: 16px;
       outline: none;
-      transition: box-shadow 0.3s ease;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
     input[type="text"]:focus {
-      box-shadow: 0 0 6px #D3D3D3;
+      box-shadow: 0 0 6px #c8c8c8;
+      border-color: #8a63b8;
     }
 
     button {
@@ -95,68 +96,55 @@
       transform: scale(1.05);
     }
 
-    /* Fancy Answer Box */
-    /* Elegant Answer Box */
-.answer {
-  position: relative;
-  margin-top: 35px;
-  background: #e3e1e1;
-  color: #2e003e;
-  padding: 25px;
-  text-align: left;
-  border-radius: 15px;
-  font-size: 17px;
-  line-height: 1.7;
-  /*box-shadow: 0 4px 15px rgba(0,0,0,0.1);*/
-  /*border: 1px solid rgba(0,0,0,0.1);*/
-  animation: fadeUp 0.6s ease-out;
-}
+    /* Answer Box */
+    .answer {
+      position: relative;
+      margin-top: 35px;
+      background: #e3e1e1;
+      color: #18002b; /* darker for accessibility */
+      padding: 25px;
+      text-align: left;
+      border-radius: 15px;
+      font-size: 17px;
+      line-height: 1.7;
+      animation: fadeUp 0.6s ease-out;
+    }
 
-
-/* Label before the answer */
-.answer::before {
-  content: "";
-  display: block;
-  font-weight: 600;
-  font-size: 15px;
-  margin-bottom: 8px;
-  color: black;
-  opacity: 0.8;
-}
-
+    .answer::before {
+      content: "";
+      display: block;
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 8px;
+      color: black;
+      opacity: 0.8;
+    }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-
-
+    /* Typing animation */
     .typing {
-  display: inline-block;
-  border-right: 3px solid rgba(114, 16, 122, 0.6);
-  white-space: normal;
-  overflow: hidden;
-  animation: typing 2.5s steps(40, end) forwards, blink 0.7s infinite;
-  word-wrap: break-word;
-}
+      display: inline-block;
+      border-right: 3px solid rgba(114, 16, 122, 0.0); /* hide cursor after typing */
+      white-space: normal;
+      overflow: hidden;
+      animation: typing 2.5s steps(40, end) forwards;
+      word-wrap: break-word;
+    }
 
-/* Updated animation */
-@keyframes typing {
-  from {
-    max-height: 0;
-    opacity: 0;
-  }
-  to {
-    max-height: 1000px; /* enough for long text */
-    opacity: 1;
-  }
-}
-
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-
+    @keyframes typing {
+      from {
+        max-height: 0;
+        opacity: 0;
+      }
+      to {
+        max-height: 1000px;
+        opacity: 1;
+      }
+    }
 
     /* Footer */
     .footer {
@@ -175,7 +163,7 @@
       text-decoration: underline;
     }
 
-    /* Back to Home link */
+    /* Back Home */
     .back-home {
       display: inline-block;
       margin-top: 25px;
@@ -191,6 +179,7 @@
     .back-home:hover {
       background-color: #a471c4;
     }
+
   </style>
 </head>
 <body>
@@ -203,7 +192,7 @@
 
   <div class="container">
     <h2>Ask Our Assistant</h2>
-    <p>Type your question below </p>
+    <p>Type your question below</p>
 
     <form method="POST" action="/faq">
       <input type="text" name="question" placeholder="Ask something..." required>
@@ -217,7 +206,7 @@
     {% endif %}
 
     <div class="footer">
-      Need more help? <a href="mailto:minimocares@gmail.com">Contact us directly</a>.
+      Need more help? Contact us directly at minimocares@gmail.com
     </div>
 
     <a href="/home" class="back-home">← Back to Home</a>
