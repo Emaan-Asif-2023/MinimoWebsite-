@@ -95,8 +95,71 @@ def project5():
     return render_template("project5.html")
 
 
-# -------------------- VOLUNTEER FORM -------------------- #
 
+# -------------------- EMAIL FUNCTIONS -------------------- #
+def send_confirmation_email(to_email, name):
+    sender_email = "minimocares.noreply@gmail.com"
+    sender_password = "foohlopybcodvupi"
+
+    subject = "Welcome to Minimo Cares!"
+    body = f"""Dear {name},
+Thank you for signing up as a volunteer with Minimo Cares!
+We are excited to have you join our mission of spreading care, compassion, and kindness.
+
+Our team will get in touch with you soon regarding upcoming welfare activities.
+
+Warm regards,
+The Minimo Cares Team
+"""
+
+    msg = MIMEText(body)
+    msg["Subject"] = subject
+    msg["From"] = sender_email
+    msg["To"] = to_email
+
+    try:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+            server.login(sender_email, sender_password)
+            server.send_message(msg)
+        print(f"Email successfully sent to {to_email}")
+    except Exception as e:
+        print(f"Failed to send confirmation email: {e}")
+
+def send_admin_notification(volunteer):
+    official_email = "minimocares@gmail.com"
+    sender_email = "minimocares.noreply@gmail.com"
+    sender_password = "foohlopybcodvupi"
+
+    subject = f"New Volunteer Registration: {volunteer['name']}"
+    body = f"""
+A new volunteer has submitted their information.
+
+Name: {volunteer['name']}
+Email: {volunteer['email']}
+Phone: {volunteer['phone']}
+Age: {volunteer['age']}
+City: {volunteer['city']}
+Status: {volunteer['status']}
+Institute: {volunteer['institute']}
+
+Reason for Volunteering:
+{volunteer['reason']}
+"""
+
+    msg = MIMEText(body)
+    msg["Subject"] = subject
+    msg["From"] = sender_email
+    msg["To"] = official_email
+
+    try:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+            server.login(sender_email, sender_password)
+            server.send_message(msg)
+        print(f"Admin notified at {official_email}")
+    except Exception as e:
+        print(f"Failed to send admin notification: {e}")
+
+# -------------------- VOLUNTEER FORM ROUTE -------------------- #
 @app.route('/volunteerform', methods=['GET', 'POST'])
 def volunteer_form():
     if request.method == 'POST':
@@ -203,69 +266,11 @@ def faq():
 
     return render_template("faq.html", answer=answer, question=user_question)
 
-def send_confirmation_email(to_email, name):
-    sender_email = "minimocares.noreply@gmail.com"
-    sender_password = "foohlopybcodvupi"
 
-    subject = "Welcome to Minimo Cares!"
-    body = f"""Dear {name},
-Thank you for signing up as a volunteer with Minimo Cares!
-We are excited to have you join our mission of spreading care, compassion, and kindness.
 
-Our team will get in touch with you soon regarding upcoming welfare activities.
 
-Warm regards,
-The Minimo Cares Team
-"""
 
-    msg = MIMEText(body)
-    msg["Subject"] = subject
-    msg["From"] = sender_email
-    msg["To"] = to_email
 
-    try:
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-            server.login(sender_email, sender_password)
-            server.send_message(msg)
-        print(f"Email successfully sent to {to_email}")
-    except Exception as e:
-        print(f" Failed to send email: {e}")
-
-def send_admin_notification(volunteer):
-    official_email = "minimocares@gmail.com"   # Your official inbox
-    sender_email = "minimocares.noreply@gmail.com"
-    sender_password = "foohlopybcodvupi"       # App password
-
-    subject = f"New Volunteer Registration: {volunteer['name']}"
-
-    body = f"""
-A new volunteer has submitted their information.
-
-Name: {volunteer['name']}
-Email: {volunteer['email']}
-Phone: {volunteer['phone']}
-Age: {volunteer['age']}
-City: {volunteer['city']}
-Status: {volunteer['status']}
-Institute: {volunteer['institute']}
-
-Reason for Volunteering:
-{volunteer['reason']}
-
-"""
-
-    msg = MIMEText(body)
-    msg["Subject"] = subject
-    msg["From"] = sender_email
-    msg["To"] = official_email
-
-    try:
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-            server.login(sender_email, sender_password)
-            server.send_message(msg)
-        print(f"Admin notified at {official_email}")
-    except Exception as e:
-        print(f"Failed to send admin notification: {e}")
 
 if __name__ == "__main__":
     app.run(debug=True)
