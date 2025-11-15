@@ -4,6 +4,7 @@ import json
 import difflib
 import smtplib
 from email.mime.text import MIMEText
+import threading
 
 
 app = Flask(__name__)
@@ -99,8 +100,6 @@ def project5():
 @app.route('/volunteerform', methods=['GET', 'POST'])
 def volunteer_form():
     if request.method == 'POST':
-        print("Form submission received!")
-
         name = request.form.get('name')
         email = request.form.get('email')
         phone = request.form.get('phone')
@@ -111,19 +110,21 @@ def volunteer_form():
         reason = request.form.get('reason')
 
         # Save to DB
-        conn = get_db_connection()
-        cursor = conn.cursor()
-        cursor.execute("""
-            INSERT INTO volunteers (name, email, phone, age, city, status, institute, reason)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        """, (name, email, phone, age, city, status, institute, reason))
-        conn.commit()
-        conn.close()
+        try:
+            conn = get_db_connection()
+            cursor = conn.cursor()
+            cursor.execute("""
+                INSERT INTO volunteers (name, email, phone, age, city, status, institute, reason)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """, (name, email, phone, age, city, status, institute, reason))
+            conn.commit()
+            conn.close()
+        except Exception as e:
+            print(f"Database error: {e}")
+            flash("There was an error saving your data. Please try again.")
+            return redirect(url_for('volunteer_form'))
 
-        # Confirmation email to volunteer
-        send_confirmation_email(email, name)
-
-        # NEW --- Forward details to admin
+        # Create volunteer dict
         volunteer = {
             "name": name,
             "email": email,
@@ -134,9 +135,12 @@ def volunteer_form():
             "institute": institute,
             "reason": reason
         }
-        send_admin_notification(volunteer)
 
-        flash("Thank you for joining us! A confirmation email has been sent to you.")
+        # Send emails asynchronously
+        threading.Thread(target=send_confirmation_email, args=(email, name)).start()
+        threading.Thread(target=send_admin_notification, args=(volunteer,)).start()
+
+        flash("Thank you for joining us! A confirmation email will be sent shortly.")
         return redirect(url_for('home'))
 
     return render_template('form.html')
