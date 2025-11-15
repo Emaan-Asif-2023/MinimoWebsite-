@@ -99,6 +99,8 @@ def project5():
 @app.route('/volunteerform', methods=['GET', 'POST'])
 def volunteer_form():
     if request.method == 'POST':
+        print("Form submission received!")
+
         name = request.form.get('name')
         email = request.form.get('email')
         phone = request.form.get('phone')
