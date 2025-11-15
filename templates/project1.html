@@ -80,48 +80,13 @@
       border-radius: 12px;
       height: 220px;
       object-fit: cover;
+      cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .gallery img:hover {
       transform: scale(1.05);
       box-shadow: 0 4px 15px rgba(123, 0, 158, 0.3);
-    }
-
-    /* Details section */
-    .details {
-      background-color: #EADAFB;
-      border-radius: 12px;
-      padding: 22px 25px;
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 18px;
-      align-items: start;
-      margin-bottom: 18px;
-    }
-
-    .details .label {
-      font-weight: 700;
-      color: #4B007D;
-      font-size: 15px;
-      padding-top: 3px;
-    }
-
-    .details .value {
-      color: #2C003E;
-      font-size: 15px;
-      text-align: left;
-    }
-
-    .details .value p {
-      margin: 0 0 10px 0;
-    }
-
-    .details .value .lead {
-      font-weight: 600;
-      color: #3b0048;
-      margin-bottom: 8px;
-      display: block;
     }
 
     /* Back button */
@@ -146,23 +111,59 @@
 
     /* Footer */
     .footer {
+      width: 100%;
       text-align: center;
-      padding: 20px;
+      padding: 15px 0;
       background-color: #17021f;
       color: white;
-      font-size: 14px;
+      font-size: 16px;
       margin-top: 50px;
-      animation: fadeInUp 1.5s ease-in-out;
+    }
+
+    /* Lightbox Styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      animation: zoomIn 0.3s ease;
+    }
+
+    .lightbox:after {
+      content: "✕";
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     @media (max-width: 720px) {
-      .details {
-        grid-template-columns: 1fr;
+      .project-section {
+        padding: 20px;
       }
     }
   </style>
 </head>
-
 <body>
 
   <!-- Header -->
@@ -187,41 +188,37 @@
         <img src="{{ url_for('static', filename='plantation' ~ i ~ '.jpg') }}" alt="Plantation Activity {{ i }}">
       {% endfor %}
     </div>
-
-    <!-- Details Section (polished) -->
-    <div class="details">
-      <div class="label">Venue</div>
-      <div class="value">
-        <span class="lead">The Citizens Foundation – Kohrian Campus</span>
-        <p>On-campus plantation area and surrounding compound. Coordinated with school administration for access and student participation.</p>
-      </div>
-
-      <div class="label">Objective</div>
-      <div class="value">
-        <span class="lead">Awareness + Capacity Building</span>
-        <p>To educate students on climate change impacts, encourage environmentally responsible behaviour, and provide practical experience through a guided plantation activity that reinforces long-term care and maintenance of green spaces.</p>
-      </div>
-
-      <div class="label">Scope</div>
-      <div class="value">
-        <span class="lead">Target Group & Activities</span>
-        <p>Primary: school students and teachers. Activities included an interactive presentation, a hands-on plantation drive, and a short practical workshop on sapling care and water-wise maintenance.</p>
-      </div>
-
-      <div class="label">Outcome</div>
-      <div class="value">
-        <span class="lead">Immediate & Long-term Impact</span>
-        <p>Immediate: increased student engagement and planting of multiple native saplings across the school campus. Long-term: strengthened environmental stewardship and a foundation for follow-up sustainability projects and student-led initiatives.</p>
-      </div>
-    </div>
-
     <a href="/home" class="back-btn">← Back to Home</a>
+  </div>
+
+  <!-- Lightbox Overlay -->
+  <div class="lightbox" id="lightbox">
+    <img id="lightbox-img" src="" alt="Enlarged Image">
   </div>
 
   <!-- Footer -->
   <div class="footer">
     Minimo Cares | 2025
   </div>
+
+  <!-- Lightbox Script -->
+  <script>
+    const galleryImages = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+      });
+    });
+
+    // Close on click
+    lightbox.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+  </script>
 
 </body>
 </html>

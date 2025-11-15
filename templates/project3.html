@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Climate Change Awareness and Plantation Drive</title>
+  <title>Kohrian Plantation Drive – Kohrian Village</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -80,48 +80,13 @@
       border-radius: 12px;
       height: 220px;
       object-fit: cover;
+      cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .gallery img:hover {
       transform: scale(1.05);
       box-shadow: 0 4px 15px rgba(123, 0, 158, 0.3);
-    }
-
-    /* Details section */
-    .details {
-      background-color: #EADAFB;
-      border-radius: 12px;
-      padding: 22px 25px;
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 18px;
-      align-items: start;
-      margin-bottom: 18px;
-    }
-
-    .details .label {
-      font-weight: 700;
-      color: #4B007D;
-      font-size: 15px;
-      padding-top: 3px;
-    }
-
-    .details .value {
-      color: #2C003E;
-      font-size: 15px;
-      text-align: left;
-    }
-
-    .details .value p {
-      margin: 0 0 10px 0;
-    }
-
-    .details .value .lead {
-      font-weight: 600;
-      color: #3b0048;
-      margin-bottom: 8px;
-      display: block;
     }
 
     /* Back button */
@@ -146,18 +111,55 @@
 
     /* Footer */
     .footer {
+      width: 100%;
       text-align: center;
-      padding: 20px;
+      padding: 14px 0;
       background-color: #17021f;
       color: white;
       font-size: 14px;
       margin-top: 50px;
-      animation: fadeInUp 1.5s ease-in-out;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      animation: zoomIn 0.3s ease;
+    }
+
+    .lightbox:after {
+      content: "✕";
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     @media (max-width: 720px) {
-      .details {
-        grid-template-columns: 1fr;
+      .project-section {
+        padding: 20px;
       }
     }
   </style>
@@ -173,14 +175,14 @@
 
   <!-- Main Project Section -->
   <div class="project-section">
-    <h2>Kohrian Plantation Drive – Kohrian Village </h2>
+    <h2>Kohrian Plantation Drive – Kohrian Village</h2>
 
-    <p class="intro-text">
-     Our team visited Kohrian Village near Barki Road to celebrate Pakistan’s Independence Day (14th August) with a meaningful and sustainable initiative, a large-scale plantation drive dedicated to improving the local environment and promoting green living. As part of our ongoing environmental sustainability efforts, we successfully planted 100 trees, focusing on species well-suited to the local climate and soil conditions.
-        The initiative followed the Agroforestry model, an approach that integrates trees within agricultural landscapes. By planting trees along the boundaries of crop fields, we aimed to enhance soil fertility, reduce erosion, and improve biodiversity while ensuring that the crops and the environment benefit simultaneously. This method not only provides shade and wind protection for crops but also contributes to carbon sequestration, helping to reduce pollution and combat the impacts of climate change.
-        Throughout the activity, our volunteers worked closely with the local farmers and residents, explaining the importance of tree planting and long-term maintenance. We ensured that each sapling would be well taken care of through scheduled watering and community-based monitoring. The warm hospitality and enthusiasm of the villagers made the event even more special, reflecting a shared sense of purpose and unity.
-        We are deeply grateful for the support and participation of everyone involved, from our dedicated volunteers to the local community members. This initiative not only celebrated our nation’s independence but also strengthened our collective commitment to a cleaner, greener, and more sustainable Pakistan. We aim to continue this mission by organizing more such drives and inspiring others to contribute to environmental preservation in their own communities.
-    </p>
+    <p class="intro-text"> Our team visited Kohrian Village near Barki Road to celebrate
+      Pakistan’s Independence Day (14th August) with a meaningful and sustainable initiative,
+      a large-scale plantation drive dedicated to improving the local environment and promoting
+      green living. As part of our ongoing environmental sustainability efforts, we successfully
+      planted 100 trees, focusing on species well-suited to the local climate and soil conditions.
+      The initiative followed the Agroforestry model, an approach that integrates trees within agricultural landscapes. By planting trees along the boundaries of crop fields, we aimed to enhance soil fertility, reduce erosion, and improve biodiversity while ensuring that the crops and the environment benefit simultaneously. This method not only provides shade and wind protection for crops but also contributes to carbon sequestration, helping to reduce pollution and combat the impacts of climate change. Throughout the activity, our volunteers worked closely with the local farmers and residents, explaining the importance of tree planting and long-term maintenance. We ensured that each sapling would be well taken care of through scheduled watering and community-based monitoring. The warm hospitality and enthusiasm of the villagers made the event even more special, reflecting a shared sense of purpose and unity. We are deeply grateful for the support and participation of everyone involved, from our dedicated volunteers to the local community members. This initiative not only celebrated our nation’s independence but also strengthened our collective commitment to a cleaner, greener, and more sustainable Pakistan. We aim to continue this mission by organizing more such drives and inspiring others to contribute to environmental preservation in their own communities. </p>
 
     <!-- Image Gallery -->
     <div class="gallery">
@@ -189,42 +191,37 @@
       {% endfor %}
     </div>
 
-   <!-- Details Section (polished) -->
-<div class="details">
-  <div class="label">Venue</div>
-  <div class="value">
-    <span class="lead">Kohrian Village – Barki Road</span>
-    <p>Located near Barki Road, Lahore. The plantation drive was conducted in collaboration with local farmers and residents, utilizing agricultural land boundaries for tree planting under the Agroforestry model. Coordination with the village committee ensured smooth execution and follow-up care.</p>
-  </div>
-
-  <div class="label">Objective</div>
-  <div class="value">
-    <span class="lead">Environmental Restoration + Community Engagement</span>
-    <p>To celebrate Independence Day through a sustainable initiative focused on reducing pollution, promoting green cover, and encouraging community participation in long-term environmental preservation. The project aimed to demonstrate practical applications of the Agroforestry model in rural settings.</p>
-  </div>
-
-  <div class="label">Scope</div>
-  <div class="value">
-    <span class="lead">Target Group & Activities</span>
-    <p>Primary: local farmers, village residents, and student volunteers. Activities included a large-scale plantation of 100 saplings, awareness discussions on climate-friendly agricultural practices, and demonstrations on sapling care, watering schedules, and protection methods for young trees.</p>
-  </div>
-
-  <div class="label">Outcome</div>
-  <div class="value">
-    <span class="lead">Immediate & Long-term Impact</span>
-    <p>Immediate: plantation of 100 trees, community participation, and raised awareness about sustainable farming and the importance of green spaces. Long-term: enhanced biodiversity, reduced air pollution, improved soil fertility, and strengthened collaboration between youth volunteers and rural communities for environmental resilience.</p>
-  </div>
-</div>
-
-
-
     <a href="/home" class="back-btn">← Back to Home</a>
+  </div>
+
+  <!-- Lightbox Overlay -->
+  <div class="lightbox" id="lightbox">
+    <img id="lightbox-img" src="" alt="Enlarged Image">
   </div>
 
   <!-- Footer -->
   <div class="footer">
     Minimo Cares | 2025
   </div>
+
+  <!-- Lightbox Script -->
+  <script>
+    const galleryImages = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+      });
+    });
+
+    // Close on click anywhere
+    lightbox.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+  </script>
 
 </body>
 </html>

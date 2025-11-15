@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Climate Change Awareness and Plantation Drive</title>
+  <title>Career Counselling Session – Al Beruni International School</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -80,48 +80,13 @@
       border-radius: 12px;
       height: 220px;
       object-fit: cover;
+      cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .gallery img:hover {
       transform: scale(1.05);
       box-shadow: 0 4px 15px rgba(123, 0, 158, 0.3);
-    }
-
-    /* Details section */
-    .details {
-      background-color: #EADAFB;
-      border-radius: 12px;
-      padding: 22px 25px;
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 18px;
-      align-items: start;
-      margin-bottom: 18px;
-    }
-
-    .details .label {
-      font-weight: 700;
-      color: #4B007D;
-      font-size: 15px;
-      padding-top: 3px;
-    }
-
-    .details .value {
-      color: #2C003E;
-      font-size: 15px;
-      text-align: left;
-    }
-
-    .details .value p {
-      margin: 0 0 10px 0;
-    }
-
-    .details .value .lead {
-      font-weight: 600;
-      color: #3b0048;
-      margin-bottom: 8px;
-      display: block;
     }
 
     /* Back button */
@@ -146,18 +111,55 @@
 
     /* Footer */
     .footer {
+      width: 100%;
       text-align: center;
-      padding: 20px;
+      padding: 12px 0;
       background-color: #17021f;
       color: white;
       font-size: 14px;
       margin-top: 50px;
-      animation: fadeInUp 1.5s ease-in-out;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      animation: zoomIn 0.3s ease;
+    }
+
+    .lightbox:after {
+      content: "✕";
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     @media (max-width: 720px) {
-      .details {
-        grid-template-columns: 1fr;
+      .project-section {
+        padding: 20px;
       }
     }
   </style>
@@ -173,58 +175,49 @@
 
   <!-- Main Project Section -->
   <div class="project-section">
-    <h2>Career Counselling Session -Al Beruni International School, Harbanspura </h2>
+    <h2>Career Counselling Session – Al Beruni International School, Harbanspura</h2>
 
-    <p class="intro-text">
-      Our team visited Al Beruni International School, Harbanspura, where we conducted an extensive career counselling session designed to guide students in making informed decisions about their future academic and professional paths. The session targeted students of grades 9 and 10, a crucial stage where many begin to explore their interests, strengths, and potential career choices.
-        During the session, our volunteers engaged students in an open and interactive discussion about the diverse range of career opportunities available today , from traditional fields such as medicine, engineering, and business to emerging domains like data science, artificial intelligence, digital media, and environmental sciences. We emphasized the importance of self-awareness, helping students understand how identifying their personal interests, values, and aptitudes can play a key role in choosing the right career path.
-        To make the session more relatable and inspiring, we invited students and representatives from different universities to share their real-life experiences, academic journeys, and insights into university life. They spoke about the challenges they faced, the decisions that shaped their careers, and how persistence and passion led them to success. This interactive segment allowed school students to ask questions, clarify doubts, and gain first-hand knowledge about higher education options and future career prospects.
-        The enthusiasm and curiosity shown by the students were truly remarkable. Many expressed that the session helped them gain clarity about their goals and motivated them to plan ahead with confidence. Our volunteers also provided practical advice on how to select subjects, build strong academic profiles, explore extracurricular interests, and make use of guidance resources effectively.
-        Overall, the session was a resounding success, fostering awareness, motivation, and a sense of direction among the young learners. It served as a reminder that early career guidance can empower students to make thoughtful, confident choices and prepare themselves for a brighter, more purposeful future.
+    <p  class="intro-text"> Our team visited Al Beruni International School, Harbanspura, where we conducted an extensive career counselling session designed to guide students in making informed decisions about their future academic and professional paths. The session targeted students of grades 9 and 10, a crucial stage where many begin to explore their interests, strengths, and potential career choices. During the session, our volunteers engaged students in an open and interactive discussion about the diverse range of career opportunities available today , from traditional fields such as medicine, engineering, and business to emerging domains like data science, artificial intelligence, digital media, and environmental sciences. We emphasized the importance of self-awareness, helping students understand how identifying their personal interests, values, and aptitudes can play a key role in choosing the right career path. To make the session more relatable and inspiring, we invited students and representatives from different universities to share their real-life experiences, academic journeys, and insights into university life. They spoke about the challenges they faced, the decisions that shaped their careers, and how persistence and passion led them to success. This interactive segment allowed school students to ask questions, clarify doubts, and gain first-hand knowledge about higher education options and future career prospects. The enthusiasm and curiosity shown by the students were truly remarkable. Many expressed that the session helped them gain clarity about their goals and motivated them to plan ahead with confidence. Our volunteers also provided practical advice on how to select subjects, build strong academic profiles, explore extracurricular interests, and make use of guidance resources effectively. Overall, the session was a resounding success, fostering awareness, motivation, and a sense of direction among the young learners. It served as a reminder that early career guidance can empower students to make thoughtful, confident choices and prepare themselves for a brighter, more purposeful future.
     </p>
 
     <!-- Image Gallery -->
     <div class="gallery">
       {% for i in range(1, 25) %}
-        <img src="{{ url_for('static', filename='plantation' ~ i ~ '.jpg') }}" alt="Plantation Activity {{ i }}">
+        <img src="{{ url_for('static', filename='plantation' ~ i ~ '.jpg') }}" alt="Activity {{ i }}">
       {% endfor %}
     </div>
 
-   <!-- Details Section (polished) -->
-<div class="details">
-  <div class="label">Venue</div>
-  <div class="value">
-    <span class="lead">Al Beruni International School – Harbanspura Campus</span>
-    <p>Location: Harbanspura, Canal Road. The session was conducted in the school auditorium in collaboration with the administration and teaching staff, ensuring active participation of students and smooth coordination throughout the event.</p>
-  </div>
-
-  <div class="label">Objective</div>
-  <div class="value">
-    <span class="lead">Career Awareness + Student Empowerment</span>
-    <p>To guide students of grades 9 and 10 in exploring diverse career paths, helping them understand how to align their interests, strengths, and values with future opportunities. The session aimed to build confidence and awareness about making informed academic and career decisions.</p>
-  </div>
-
-  <div class="label">Scope</div>
-  <div class="value">
-    <span class="lead">Target Group & Activities</span>
-    <p>Primary: 9th and 10th grade students and faculty members. Activities included an interactive career counselling session, motivational talks by university students, Q&A discussions, and sharing of real-life academic and professional experiences from different fields.</p>
-  </div>
-
-  <div class="label">Outcome</div>
-  <div class="value">
-    <span class="lead">Immediate & Long-term Impact</span>
-    <p>Immediate: increased student engagement, curiosity, and awareness regarding career options and university life. Long-term: improved decision-making skills, enhanced self-awareness, and motivation among students to plan their future paths with clarity and confidence.</p>
-  </div>
-</div>
-
-
     <a href="/home" class="back-btn">← Back to Home</a>
+  </div>
+
+  <!-- Lightbox Overlay -->
+  <div class="lightbox" id="lightbox">
+    <img id="lightbox-img" src="" alt="Enlarged Image">
   </div>
 
   <!-- Footer -->
   <div class="footer">
     Minimo Cares | 2025
   </div>
+
+  <!-- Lightbox Script -->
+  <script>
+    const galleryImages = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+      });
+    });
+
+    // Close on click anywhere
+    lightbox.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+  </script>
 
 </body>
 </html>

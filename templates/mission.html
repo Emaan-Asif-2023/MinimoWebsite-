@@ -16,7 +16,9 @@
     /* Elegant Header */
     .header {
       width: 100%;
-      background: linear-gradient(to right, #4b0c5a, #7c45a3);
+      /*background: linear-gradient(to right, #4b0c5a, #7c45a3);*/
+      background:#17021f;
+
       color: white;
       text-align: center;
       padding: 30px 20px;
@@ -105,64 +107,70 @@
     }
 
     /* Quote Banner */
-    .quote-banner {
-      width: 100%;
-      background: linear-gradient(135deg, #b691c4 0%, #d3b1e0 100%);
-      color: #2c003e;
-      text-align: center;
-      padding: 25px 20px;
-      position: relative;
-      overflow: hidden;
-      margin: 60px 0 40px 0;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
+.quote-banner {
+  width: 100%;
+  background: linear-gradient(135deg, #b691c4 0%, #d3b1e0 100%);
+  color: #2c003e;
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+  margin: 70px 0 50px 0;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+}
 
-    .quote-banner::before,
-    .quote-banner::after {
-      content: "";
-      position: absolute;
-      width: 200px;
-      height: 100px;
-      background: rgba(255, 255, 255, 0.25);
-      border-radius: 50%;
-      filter: blur(40px);
-      animation: float 10s ease-in-out infinite;
-    }
+/* Soft floating light accents */
+.quote-banner::before,
+.quote-banner::after {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  filter: blur(45px);
+  animation: float 16s ease-in-out infinite;
+}
 
-    .quote-banner::before {
-      top: -60px;
-      left: -80px;
-    }
+.quote-banner::before {
+  top: -60px;
+  left: -30px;
+}
 
-    .quote-banner::after {
-      bottom: -70px;
-      right: -90px;
-      animation-delay: 7s;
-    }
+.quote-banner::after {
+  bottom: -60px;
+  right: -30px;
+  animation-delay: 8s;
+}
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0) translateX(0); }
-      50% { transform: translateY(30px) translateX(20px); }
-    }
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(25px, 20px); }
+}
 
-    .quote-content {
-      max-width: 700px;
-      margin: 0 auto;
-    }
+.quote-content {
+  max-width: 750px;
+  margin: 0 auto;
+}
 
-    .quote-text {
-      font-size: 1.6rem;
-      font-weight: 500;
-      line-height: 1.6;
-      margin-bottom: 10px;
-    }
+.quote-text {
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #2a0038;
+  margin-bottom: 15px;
+}
 
-    .quote-author {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #6b357c;
-      letter-spacing: 1px;
-    }
+.quote-author {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #552e6b;
+  margin-top: 5px;
+}
+
 
     /* Footer */
     .footer {
@@ -234,13 +242,16 @@
 
   </div>
 
-  <!-- Quote Banner -->
   <section class="quote-banner">
-    <div class="quote-content">
-      <p class="quote-text">“Coming together is a beginning; keeping together is progress; working together is success.”</p>
-      <p class="quote-author">– Henry Ford</p>
-    </div>
-  </section>
+  <div class="quote-content">
+    <p class="quote-text">
+      “Real change begins when we choose to rise above ourselves,
+      when we dare to build something that lasts beyond our own time.”
+    </p>
+    <p class="quote-author">– Minimo Cares</p>
+  </div>
+</section>
+
 
   <!-- Footer -->
   <div class="footer">Minimo Cares | 2025</div>
