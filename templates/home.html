@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minimo Cares</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='minimo 2.png') }}">
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <a href="/faq" class="faq-button" title="Ask Our Assistant"> Ask Assistant</a>
 
@@ -389,27 +391,40 @@
       border-radius: 2px;
     }
 
-    /* Team Members Grid */
-   .team-container {
+  /* Team Containers for custom rows */
+.team-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
   gap: 40px;
-  max-width: 900px;
-  margin: 0 auto;
+  justify-content: center; /* centers members */
+  margin: 0 auto 50px auto;
+}
+
+.row-1 {
+  grid-template-columns: repeat(4, 180px); /* 4 members in first row */
+}
+
+.row-2 {
+  grid-template-columns: repeat(3, 180px); /* 3 members in second row */
+}
+
+@media (max-width: 1024px) {
+  .row-1, .row-2 {
+    grid-template-columns: repeat(2, 180px); /* 2 columns on medium screens */
+  }
 }
 
 @media (max-width: 768px) {
-  .team-container {
-    grid-template-columns: repeat(2, 1fr);
+  .row-1, .row-2 {
+    grid-template-columns: repeat(2, 140px);
   }
 }
 
 @media (max-width: 480px) {
-  .team-container {
-    grid-template-columns: repeat(1, 1fr);
+  .row-1, .row-2 {
+    grid-template-columns: 1fr; /* stack vertically on small screens */
   }
 }
+
 
 
 
@@ -628,10 +643,12 @@
 
 
   <!-- Meet Our Team Section -->
-  <div class="team-section">
+
+<div class="team-section">
   <h2>MEET OUR TEAM</h2>
 
-  <div class="team-container">
+
+  <div class="team-container row-1">
     <div class="team-member">
       <img src="{{ url_for('static', filename='minahil.jpg') }}" alt="Member 1">
       <h3>Minahil Rashid</h3>
@@ -643,17 +660,22 @@
       <h3>Muhammad Hashir</h3>
       <p>Founder</p>
     </div>
+
     <div class="team-member">
       <img src="{{ url_for('static', filename='hania.jpg') }}" alt="Member 3">
       <h3>Hania Farooq</h3>
       <p>Public Health Liason</p>
     </div>
+
     <div class="team-member">
       <img src="{{ url_for('static', filename='emaan5.jpg') }}" alt="Member 4">
       <h3>Emaan Asif</h3>
       <p>Website Development Lead</p>
     </div>
+  </div>
 
+  <!-- Second row: 3 members -->
+  <div class="team-container row-2">
     <div class="team-member">
       <img src="{{ url_for('static', filename='ayesha.jpg') }}" alt="Member 5">
       <h3>Ayesha Saeed</h3>
@@ -666,9 +688,14 @@
       <p>Media Team Head</p>
     </div>
 
-
+    <div class="team-member">
+      <img src="{{ url_for('static', filename='newmember.jpg') }}" alt="Member 7">
+      <h3>Rayyan Saeed</h3>
+      <p>Graphics Team Head</p>
+    </div>
   </div>
 </div>
+
   <!-- Projects Carousel Section -->
 <div class="projects-section">
   <h2>OUR PROJECTS</h2>
