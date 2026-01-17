@@ -64,7 +64,7 @@ def splash():
 def home():
     return render_template("home.html")
 
-@app.route('/aboutus')
+@app.route('/about-us')
 def about():
     return render_template("aboutus.html")
 
