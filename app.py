@@ -19,7 +19,7 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
-# -------------------- INITIALIZE DATABASE -------------------- #
+# DATABASE
 def init_db():
     """Run the schema.sql once to create tables."""
     with app.app_context():
@@ -54,7 +54,7 @@ def view_db():
     conn.close()
     return render_template("initdb.html", table_data=table_data)
 
-# -------------------- ROUTES -------------------- #
+# ROUTES
 
 @app.route('/')
 def splash():
@@ -92,7 +92,7 @@ def project4():
 def project5():
     return render_template("project5.html")
 
-# -------------------- EMAIL FUNCTIONS USING SENDGRID -------------------- #
+# EMAIL FUNCTIONS USING SENDGRID
 RESEND_KEY = os.environ.get("RESEND_KEY")
 
 def send_email(to, subject, html):
@@ -144,7 +144,7 @@ def send_admin_notification(volunteer):
     send_email("minimocares@gmail.com", subject, body)
 
 
-# -------------------- VOLUNTEER FORM ROUTE -------------------- #
+# VOLUNTEER FORM
 @app.route('/volunteerform', methods=['GET', 'POST'])
 def volunteer_form():
     if request.method == 'POST':
