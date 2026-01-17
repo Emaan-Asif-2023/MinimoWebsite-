@@ -85,14 +85,27 @@
     }
 
   </style>
-
+<!--
   <script>
     setTimeout(() => {
       document.body.style.transition = "opacity 1s ease";
       document.body.style.opacity = 0;
       setTimeout(() => { window.location.href = "/home"; }, 1000);
     }, 5000);
+  </script> -->
+
+  <script>
+    function goHome() {
+      window.location.href = "/home";
+    }
+
+    setTimeout(() => {
+      document.body.style.transition = "opacity 1s ease";
+      document.body.style.opacity = 0;
+      setTimeout(() => { window.location.href = "/home"; }, 1000);
+    }, 3000);
   </script>
+
 </head>
 <body>
   <!-- Particles -->
@@ -102,10 +115,19 @@
   <div class="particle"></div>
   <div class="particle"></div>
   <div class="particle"></div>
-
+<!--
   <div class="logo-container">
     <img src="{{ url_for('static', filename='minimo 2.png') }}" alt="Minimo Logo" class="logo">
     <div class="title">MINIMO CARES</div>
-  </div>
+  </div> -->
+
+<div class="logo-container" onclick="goHome()" style="cursor: pointer;">
+  <img src="{{ url_for('static', filename='minimo 2.png') }}"
+       alt="Minimo Logo"
+       class="logo">
+
+  <div class="title">MINIMO CARES</div>
+</div>
+
 </body>
 </html>

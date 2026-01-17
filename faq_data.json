@@ -3,11 +3,17 @@
     "question": "How can I donate?",
     "variations": [
       "How to donate?",
-      "Where to donate?",
+      "Where can I donate?",
       "What is the donation process?",
       "How can I give money?",
       "Ways to donate",
-      "I want to donate"
+      "I want to donate",
+      "How do I make a donation?",
+      "Where should I send my donation?",
+      "How do I contribute financially?",
+      "How to support with money?",
+      "Tell me the donation method",
+      "Can you guide me on donating?"
     ],
     "answer": "You can donate through our official channels or contact us at minimocares@gmail.com."
   },
@@ -19,7 +25,14 @@
       "What is your purpose?",
       "What is the aim of Minimo Cares?",
       "Your mission?",
-      "Why was Minimo Cares created?"
+      "Why was Minimo Cares created?",
+      "What are you working towards?",
+      "What goals does Minimo Cares have?",
+      "What is your main objective?",
+      "What does your organisation aim to achieve?",
+      "What do you stand for?",
+      "What is the vision of Minimo Cares?",
+      "What impact do you want to create?"
     ],
     "answer": "Our mission is to support underprivileged communities through education, food drives, and healthcare initiatives."
   },
@@ -31,7 +44,14 @@
       "I want to volunteer",
       "Ways to volunteer",
       "Can I join as a volunteer?",
-      "Join volunteer team"
+      "Join volunteer team",
+      "How do I sign up for volunteering?",
+      "Where can I register as a volunteer?",
+      "Can I help as a volunteer?",
+      "Process for volunteering",
+      "How to become a volunteer?",
+      "How do I participate in your volunteering work?",
+      "I want to help in your projects"
     ],
     "answer": "You can fill out our volunteer form available under the 'Join Us' section."
   },
@@ -43,8 +63,129 @@
       "Can anyone join?",
       "Eligibility to join Minimo Cares",
       "Can I join your foundation?",
-      "Who is allowed to join?"
+      "Who is allowed to join?",
+      "Who can participate?",
+      "Is membership open to everyone?",
+      "Do I qualify to join?",
+      "Who can become a member?",
+      "Are there any requirements to join?",
+      "Can students join your foundation?",
+      "Do you accept volunteers of all ages?"
     ],
     "answer": "Anyone who is passionate about helping others is welcome to join our foundation!"
+  },
+
+  {
+    "question": "What is Minimo Cares?",
+    "variations": [
+      "What is minimo",
+      "What does Minimo Cares mean?",
+      "Tell me about Minimo Cares",
+      "What is this Minimo Cares organisation?",
+      "What do you do at Minimo Cares?",
+      "What kind of group is Minimo Cares?",
+      "Can you explain what Minimo Cares is?",
+      "What is the purpose of Minimo Cares?",
+      "What type of foundation is Minimo Cares?",
+      "What work does Minimo Cares do?",
+      "What is your organisation about?"
+    ],
+    "answer": "Minimo Cares is a welfare group that aims to bring a positive change in Pakistan through education, awareness and sustainability."
+  },
+
+  {
+    "question": "What does Minimo mean?",
+    "variations": [
+      "Meaning of Minimo?",
+      "What is the meaning behind Minimo?",
+      "Why is it called Minimo?",
+      "How did you choose the name Minimo?",
+      "Origin of the name Minimo?",
+      "What does the word Minimo represent?",
+      "What inspired the name Minimo?",
+      "What does Minimo stand for?",
+      "Why is your foundation named Minimo?"
+    ],
+    "answer": "Minimo is an accumulation of our founder's nicknames. Mini for Minahil and Mo for Muhammad."
+  },
+
+  {
+    "question": "When was Minimo Cares started?",
+    "variations": [
+      "When did Minimo Cares begin?",
+      "Start date of Minimo Cares?",
+      "When was your foundation founded?",
+      "When did you launch Minimo Cares?",
+      "When was this organisation established?",
+      "Founding year of Minimo Cares?",
+      "When was Minimo Cares created?",
+      "What year did Minimo Cares start?"
+    ],
+    "answer": "Minimo Cares was started in January of 2025."
+  },
+
+  {
+    "question": "What was the motivation behind Minimo?",
+    "variations": [
+      "Why did you start Minimo?",
+      "What inspired Minimo Cares?",
+      "Reason behind creating Minimo?",
+      "What made you start this foundation?",
+      "What was your inspiration?",
+      "How did the idea of Minimo Cares come?",
+      "Why was Minimo established?",
+      "What encouraged the creation of Minimo?",
+      "What motivated you to begin this mission?"
+    ],
+    "answer": "We both had the opportunity to go to the United States of America and represent our country. We want to introduce enhanced, new and educated concepts in Pakistan to uplift the quality of life and help students achieve their goals."
+  },
+
+  {
+    "question": "What content do you post on social media?",
+    "variations": [
+      "What do you upload online?",
+      "What type of posts do you share?",
+      "What can we see on your social media?",
+      "What do you share on Instagram or Facebook?",
+      "What kind of content do you create?",
+      "What do you post about?",
+      "What topics do you cover?",
+      "What should I expect on your pages?",
+      "What type of videos or posts do you make?"
+    ],
+    "answer": "We post infotainment content on our social media to help people enjoy whilst learning new things."
+  },
+
+  {
+    "question": "Where do you carry your welfare projects?",
+    "variations": [
+      "Where do you conduct your projects?",
+      "Locations of your welfare work?",
+      "Where do you operate?",
+      "Which areas do you work in?",
+      "Where are your projects held?",
+      "Which cities do you work in?",
+      "Do you work outside Lahore?",
+      "Where does Minimo Cares help people?",
+      "Where are your activities conducted?"
+    ],
+    "answer": "We carry our projects all over Lahore but we aim to bring our mission at a national level and expand it to other cities as well."
+  },
+
+  {
+    "question": "How can I contribute?",
+    "variations": [
+      "How can I help?",
+      "Ways to contribute",
+      "How do I support your cause?",
+      "How can I take part?",
+      "How to contribute to your mission?",
+      "Can I help in any way?",
+      "How can I get involved?",
+      "What can I do to support you?",
+      "How do I take part in your activities?",
+      "How can I assist your foundation?"
+    ],
+    "answer": "You can contribute by volunteering at our projects or sending donations to help us carry out the projects."
   }
 ]
