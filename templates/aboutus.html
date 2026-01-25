@@ -3,9 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>About Us</title>
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='minimo 2.png') }}">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='minimo 2.png') }}">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
@@ -30,24 +34,23 @@
 
     /* Header */
     .header {
-      height: 13vh;
       background-color: #17021f;
       display: flex;
       align-items: center;
-      padding: 0 20px;
+      padding: 15px 20px;
       animation: fadeInUp 1s ease-in-out;
     }
 
     .header img {
-      height: 50px;
-      width: 50px;
+      height: 45px;
+      width: 45px;
       border-radius: 50%;
       margin-right: 10px;
     }
 
     .header h1 {
       color: white;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 600;
       letter-spacing: 1px;
       margin: 0;
@@ -55,13 +58,11 @@
 
     /* About Section */
     .about-section {
-      max-width: 1000px;
-      margin: 40px auto;
       background: white;
       border-radius: 15px;
-      padding: 40px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       animation: fadeInUp 1.2s ease-in-out;
+      transition: 0.3s ease;
     }
 
     .about-section h1 {
@@ -85,7 +86,6 @@
     .about-section p {
       font-size: 16px;
       margin-bottom: 20px;
-      text-align: justify;
       opacity: 0;
       animation: fadeInUp 1s ease forwards;
     }
@@ -96,14 +96,12 @@
     .about-section p:nth-child(5) { animation-delay: 0.8s; }
     .about-section p:nth-child(6) { animation-delay: 1s; }
 
-    /* Subtle hover effect */
     .about-section:hover {
       transform: translateY(-5px);
-      transition: 0.3s ease;
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
 
-    /* Footer style */
+    /* Footer */
     .footer {
       text-align: center;
       padding: 20px;
@@ -113,28 +111,57 @@
       margin-top: 50px;
       animation: fadeInUp 1.5s ease-in-out;
     }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 16px;
+      }
+
+      .about-section h1 {
+        font-size: 22px;
+      }
+
+      .about-section p {
+        font-size: 14px;
+        text-align: left;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <!-- Header -->
+
+
   <div class="header">
     <img src="{{ url_for('static', filename='minimo 2.png') }}" alt="Minimo Logo">
     <h1>MINIMO CARES</h1>
   </div>
 
-  <!-- About Section -->
-  <div class="about-section">
-    <h1><b>ABOUT US</b></h1>
-    <p>We are a group of passionate individuals who believe in one simple idea: together, we can make a difference. What started as a shared vision has grown into a collective movement of people dedicated to creating positive change that lasts.</p>
-    <p>United by our values of empathy, responsibility, and innovation, we work hand in hand to design and drive projects that inspire hope, uplift communities, and contribute to a better tomorrow. For us, this is more than just work—it’s our purpose.</p>
-    <p>Our team comes from diverse backgrounds, but we are bound by a common goal: to leave the world better than we found it. Whether through small initiatives or large-scale projects, every effort we make is guided by a deep commitment to people, progress, and impact.</p>
-    <p>We believe that real change begins with individuals who care and when those individuals come together, the impact multiplies. That’s what defines us. We are not just a team; we are a community of changemakers, driven by heart and vision, working towards a future full of opportunities, hope, and growth.</p>
-    <p>Empathy, responsibility, and innovation are at the heart of everything we do. These values guide our projects and ensure that our impact is meaningful and lasting.</p>
+
+  <div class="container my-4 my-md-5">
+    <div class="about-section p-3 p-md-5">
+      <h1><b>ABOUT US</b></h1>
+
+      <p>We are a group of passionate individuals who believe in one simple idea: together, we can make a difference. What started as a shared vision has grown into a collective movement of people dedicated to creating positive change that lasts.</p>
+
+      <p>United by our values of empathy, responsibility, and innovation, we work hand in hand to design and drive projects that inspire hope, uplift communities, and contribute to a better tomorrow. For us, this is more than just work—it’s our purpose.</p>
+
+      <p>Our team comes from diverse backgrounds, but we are bound by a common goal: to leave the world better than we found it. Whether through small initiatives or large-scale projects, every effort we make is guided by a deep commitment to people, progress, and impact.</p>
+
+      <p>We believe that real change begins with individuals who care and when those individuals come together, the impact multiplies. That’s what defines us. We are not just a team; we are a community of changemakers.</p>
+
+      <p>Empathy, responsibility, and innovation are at the heart of everything we do. These values guide our projects and ensure that our impact is meaningful and lasting.</p>
+    </div>
   </div>
 
-  <!-- Footer -->
+
   <div class="footer">
     Minimo Cares | 2025
   </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
