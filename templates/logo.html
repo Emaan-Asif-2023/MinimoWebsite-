@@ -4,18 +4,20 @@
   <meta charset="UTF-8">
   <meta name="author" content="Emaan Asif">
   <title>Welcome</title>
+
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='minimo 2.png') }}">
 
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=League+Spartan:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     body {
       margin: 0;
+      min-height: 100vh;
       background: radial-gradient(circle at center, #fff0f8, #f7d9f0, #eaccee);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       font-family: 'Poppins', sans-serif;
       overflow: hidden;
       position: relative;
@@ -31,7 +33,6 @@
       animation: floatParticles 8s ease-in-out infinite;
     }
 
-    /* Random positions for particles */
     .particle:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
     .particle:nth-child(2) { top: 70%; left: 10%; animation-delay: 2s; }
     .particle:nth-child(3) { top: 40%; left: 80%; animation-delay: 4s; }
@@ -45,34 +46,26 @@
       100% { transform: translate(0,0); opacity: 0.5; }
     }
 
-    .logo-container {
-      position: relative;
-      text-align: center;
-      z-index: 1;
-    }
-
     .logo {
-      width: 180px;
-      height: 180px;
+      max-width: 180px;
+      width: 60vw;
+      height: auto;
       border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #3e1b47; /* Dark border */
+      border: 4px solid #3e1b47;
       padding: 2px;
-      box-sizing: border-box;
       filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
-      transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
+      transition: transform 0.5s ease, filter 0.5s ease;
     }
 
     .logo:hover {
-      transform: scale(1.15); /* Only enlarge */
+      transform: scale(1.12);
       filter: drop-shadow(0 15px 25px rgba(0,0,0,0.25)) brightness(1.05);
-      cursor: pointer;
     }
 
     .title {
       font-family: 'League Spartan', sans-serif;
       margin-top: 20px;
-      font-size: 28px;
+      font-size: clamp(22px, 5vw, 28px);
       color: #e86fbf;
       font-weight: 700;
       letter-spacing: 2px;
@@ -81,18 +74,9 @@
     }
 
     .title:hover {
-      transform: scale(1.05); /* Slight enlargement only */
+      transform: scale(1.05);
     }
-
   </style>
-<!--
-  <script>
-    setTimeout(() => {
-      document.body.style.transition = "opacity 1s ease";
-      document.body.style.opacity = 0;
-      setTimeout(() => { window.location.href = "/home"; }, 1000);
-    }, 5000);
-  </script> -->
 
   <script>
     function goHome() {
@@ -108,6 +92,7 @@
 
 </head>
 <body>
+
   <!-- Particles -->
   <div class="particle"></div>
   <div class="particle"></div>
@@ -115,19 +100,19 @@
   <div class="particle"></div>
   <div class="particle"></div>
   <div class="particle"></div>
-<!--
-  <div class="logo-container">
-    <img src="{{ url_for('static', filename='minimo 2.png') }}" alt="Minimo Logo" class="logo">
-    <div class="title">MINIMO CARES</div>
-  </div> -->
 
-<div class="logo-container" onclick="goHome()" style="cursor: pointer;">
-  <img src="{{ url_for('static', filename='minimo 2.png') }}"
-       alt="Minimo Logo"
-       class="logo">
+  <!-- Centered Content -->
+  <div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
+    <div class="text-center" onclick="goHome()" style="cursor:pointer;">
+      <img src="{{ url_for('static', filename='minimo 2.png') }}"
+           alt="Minimo Logo"
+           class="logo img-fluid">
 
-  <div class="title">MINIMO CARES</div>
-</div>
+      <div class="title">MINIMO CARES</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

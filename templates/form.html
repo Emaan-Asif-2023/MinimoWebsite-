@@ -3,39 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <title>Join Us – Minimo Cares</title>
+
+  <!-- REQUIRED for responsiveness -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='minimo 2.png') }}">
 
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
     body {
       background-color: #F3E8FF;
       font-family: 'Poppins', sans-serif;
       margin: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
+      overflow-x: hidden;
     }
 
+    /* Header */
     header {
       width: 100%;
       background-color: #17021f;
       color: white;
-      padding: 20px 0;
+      padding: 15px 0;
       text-align: center;
-      font-size: 22px;
+      font-size: 20px;
       letter-spacing: 1px;
     }
 
+    /* Form Card */
     .form-container {
       background-color: #fff;
-      margin-top: 50px;
-      padding: 40px;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      width: 90%;
-      max-width: 600px;
-      text-align: center;
       color: #4B007D;
     }
 
@@ -51,13 +54,6 @@
       margin-bottom: 30px;
     }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      text-align: left;
-    }
-
     label {
       font-weight: 600;
       color: #4B007D;
@@ -69,24 +65,25 @@
       border-radius: 8px;
       font-size: 14px;
       font-family: 'Poppins';
-      resize: none;
       width: 100%;
     }
 
     textarea {
       min-height: 100px;
+      resize: none;
     }
 
     button {
       background-color: #5c030c;
       color: white;
-      padding: 12px 0;
+      padding: 12px;
       font-size: 15px;
       border: none;
       border-radius: 8px;
       font-weight: 600;
       cursor: pointer;
       transition: 0.3s;
+      width: 100%;
     }
 
     button:hover {
@@ -94,7 +91,7 @@
       transform: scale(1.03);
     }
 
-    a.back-link {
+    .back-link {
       display: inline-block;
       margin-top: 20px;
       text-decoration: none;
@@ -103,55 +100,101 @@
       transition: color 0.3s ease;
     }
 
-    a.back-link:hover {
+    .back-link:hover {
       color: #5c030c;
+    }
+
+    /* Mobile tweaks */
+    @media (max-width: 768px) {
+      header {
+        font-size: 18px;
+      }
+
+      .form-container h2 {
+        font-size: 22px;
+      }
     }
   </style>
 </head>
+
 <body>
 
+  <!-- Header -->
   <header>Join the Minimo Cares Team</header>
 
-  <div class="form-container">
-    <h2>Be the Change You Wish to See</h2>
-    <p>Join our team of passionate volunteers working to make a real difference.
-       Share your details below and we’ll get in touch soon!</p>
+  <!-- Main Content -->
+  <div class="container my-4 my-md-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="form-container p-3 p-md-5 text-center">
 
-    <form method="POST" action="/volunteerform">
-      <label for="name">Full Name:</label>
-      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+          <h2>Be the Change You Wish to See</h2>
+          <p>
+            Join our team of passionate volunteers working to make a real difference.
+            Share your details below and we’ll get in touch soon!
+          </p>
 
-      <label for="email">Email Address:</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          <form method="POST" action="/volunteerform" class="text-start">
 
-      <label for="phone">Phone Number:</label>
-      <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            <div class="mb-3">
+              <label for="name">Full Name:</label>
+              <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
 
-      <label for="age">Age:</label>
-      <input type="number" id="age" name="age" placeholder="Enter your age" required>
+            <div class="mb-3">
+              <label for="email">Email Address:</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
 
-      <label for="city">City:</label>
-      <input type="text" id="city" name="city" placeholder="Enter your city" required>
+            <div class="mb-3">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            </div>
 
-      <label for="status">Employment Status:</label>
-      <select id="status" name="status" required>
-        <option value="">-- Select --</option>
-        <option value="Student">Student</option>
-        <option value="Employed">Employed</option>
-        <option value="Other">Other</option>
-      </select>
+            <div class="mb-3">
+              <label for="age">Age:</label>
+              <input type="number" id="age" name="age" placeholder="Enter your age" required>
+            </div>
 
-      <label for="institute">Institute / Organization Name:</label>
-      <input type="text" id="institute" name="institute" placeholder="Enter your institute or organization name" required>
+            <div class="mb-3">
+              <label for="city">City:</label>
+              <input type="text" id="city" name="city" placeholder="Enter your city" required>
+            </div>
 
-      <label for="reason">Why do you want to join Minimo Cares?</label>
-      <textarea id="reason" name="reason" placeholder="Share your motivation for joining..." required></textarea>
+            <div class="mb-3">
+              <label for="status">Employment Status:</label>
+              <select id="status" name="status" required>
+                <option value="">-- Select --</option>
+                <option value="Student">Student</option>
+                <option value="Employed">Employed</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
 
-      <button type="submit">Submit</button>
-    </form>
+            <div class="mb-3">
+              <label for="institute">Institute / Organization Name:</label>
+              <input type="text" id="institute" name="institute"
+                     placeholder="Enter your institute or organization name" required>
+            </div>
 
-    <a href="/home" class="back-link">← Back to Home</a>
+            <div class="mb-4">
+              <label for="reason">Why do you want to join Minimo Cares?</label>
+              <textarea id="reason" name="reason"
+                        placeholder="Share your motivation for joining..." required></textarea>
+            </div>
+
+            <button type="submit">Submit</button>
+          </form>
+
+          <a href="/home" class="back-link">← Back to Home</a>
+
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
