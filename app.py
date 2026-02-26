@@ -12,7 +12,9 @@ print("RESEND_KEY is:", RESEND_KEY)
 app = Flask(__name__)
 app.secret_key = "your_secret_key"
 
-DATABASE = "dbprojectNew.db"
+#DATABASE = "dbprojectNew.db"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATABASE = os.path.join(BASE_DIR, "dbprojectNew.db")
 
 def get_db_connection():
     conn = sqlite3.connect(DATABASE)
@@ -148,14 +150,21 @@ def send_admin_notification(volunteer):
 @app.route('/volunteerform', methods=['GET', 'POST'])
 def volunteer_form():
     if request.method == 'POST':
-        name = request.form.get('name')
-        email = request.form.get('email')
-        phone = request.form.get('phone')
-        age = request.form.get('age')
-        city = request.form.get('city')
-        status = request.form.get('status')
-        institute = request.form.get('institute')
-        reason = request.form.get('reason')
+        name = request.form.get('name').strip()
+        email = request.form.get('email').strip()
+        phone = request.form.get('phone').strip()
+        age = request.form.get('age').strip()
+        city = request.form.get('city').strip()
+        status = request.form.get('status').strip()
+        institute = request.form.get('institute').strip()
+        reason = request.form.get('reason').strip()
+
+        if not age.isdigit() or int(age) <= 0:
+            flash("Invalid age. Please enter a valid age.", "danger")
+            return redirect(url_for('volunteer_form'))
+
+        age = int(age)  # convert to integer after validation
+
 
         # Save to DB
         try:

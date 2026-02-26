@@ -104,6 +104,17 @@
       color: #5c030c;
     }
 
+    .is-invalid {
+      border-color: #dc3545 !important;
+      background-color: #f8d7da !important;
+    }
+
+    /* Flash alert styling */
+    .alert {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
     /* Mobile tweaks */
     @media (max-width: 768px) {
       header {
@@ -136,51 +147,71 @@
 
           <form method="POST" action="/volunteerform" class="text-start">
 
+            <!-- Flash Messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                  {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}" role="alert">
+                      {{ message }}
+                    </div>
+                  {% endfor %}
+              {% endif %}
+            {% endwith %}
+
             <div class="mb-3">
               <label for="name">Full Name:</label>
-              <input type="text" id="name" name="name" placeholder="Enter your name" required>
+              <input type="text" id="name" name="name" placeholder="Enter your name"
+                     value="{{ request.form.name or '' }}" required>
             </div>
 
             <div class="mb-3">
               <label for="email">Email Address:</label>
-              <input type="email" id="email" name="email" placeholder="Enter your email" required>
+              <input type="email" id="email" name="email" placeholder="Enter your email"
+                     value="{{ request.form.email or '' }}" required>
             </div>
 
             <div class="mb-3">
               <label for="phone">Phone Number:</label>
-              <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+              <input type="tel" id="phone" name="phone" placeholder="Enter your phone number"
+                     value="{{ request.form.phone or '' }}" required>
             </div>
 
             <div class="mb-3">
               <label for="age">Age:</label>
-              <input type="number" id="age" name="age" placeholder="Enter your age" required>
+              <input type="number" id="age" name="age" placeholder="Enter your age"
+                     value="{{ request.form.age or '' }}"
+                     class="{% for category, msg in get_flashed_messages(with_categories=true) if 'age' in msg.lower() %}is-invalid{% endfor %}"
+                     required>
             </div>
 
             <div class="mb-3">
               <label for="city">City:</label>
-              <input type="text" id="city" name="city" placeholder="Enter your city" required>
+              <input type="text" id="city" name="city" placeholder="Enter your city"
+                     value="{{ request.form.city or '' }}" required>
             </div>
 
             <div class="mb-3">
               <label for="status">Employment Status:</label>
               <select id="status" name="status" required>
                 <option value="">-- Select --</option>
-                <option value="Student">Student</option>
-                <option value="Employed">Employed</option>
-                <option value="Other">Other</option>
+                <option value="Student" {% if request.form.status == 'Student' %}selected{% endif %}>Student</option>
+                <option value="Employed" {% if request.form.status == 'Employed' %}selected{% endif %}>Employed</option>
+                <option value="Other" {% if request.form.status == 'Other' %}selected{% endif %}>Other</option>
               </select>
             </div>
 
             <div class="mb-3">
               <label for="institute">Institute / Organization Name:</label>
               <input type="text" id="institute" name="institute"
-                     placeholder="Enter your institute or organization name" required>
+                     placeholder="Enter your institute or organization name"
+                     value="{{ request.form.institute or '' }}" required>
             </div>
 
             <div class="mb-4">
               <label for="reason">Why do you want to join Minimo Cares?</label>
               <textarea id="reason" name="reason"
-                        placeholder="Share your motivation for joining..." required></textarea>
+                        placeholder="Share your motivation for joining..."
+                        required>{{ request.form.reason or '' }}</textarea>
             </div>
 
             <button type="submit">Submit</button>
