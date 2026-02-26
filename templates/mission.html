@@ -24,7 +24,7 @@
       color: white;
       text-align: center;
       padding: 30px 20px;
-      font-size: 30px;
+      font-size: 2rem;
       font-weight: 600;
       letter-spacing: 1px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.15);
@@ -41,10 +41,11 @@
       box-shadow: 0 6px 18px rgba(0,0,0,0.2);
       object-fit: cover;
       width: 100%;
+      height: auto;
     }
 
     .mission-text {
-      font-size: 16px;
+      font-size: 1rem;
       text-align: justify;
     }
 
@@ -76,6 +77,7 @@
     .card-custom h3 {
       color: #72107a;
       margin-bottom: 10px;
+      font-size: 1.2rem;
     }
 
     .quote-banner {
@@ -89,12 +91,12 @@
     }
 
     .quote-text {
-      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
       font-weight: 500;
     }
 
     .quote-author {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 600;
       letter-spacing: 1px;
       color: #552e6b;
@@ -106,6 +108,26 @@
       text-align: center;
       padding: 20px;
       font-size: 14px;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .header {
+        font-size: 1.5rem;
+        padding: 20px 10px;
+      }
+
+      .mission-text {
+        font-size: 0.95rem;
+      }
+
+      .card-custom h3 {
+        font-size: 1rem;
+      }
+
+      .quote-banner {
+        padding: 30px 15px;
+      }
     }
   </style>
 </head>
@@ -120,60 +142,64 @@
 
   <!-- Block 1 -->
   <div class="row align-items-center mb-5">
-    <div class="col-lg-7 mb-3 mb-lg-0">
+    <div class="col-12 col-lg-7 mb-3 mb-lg-0">
       <p class="mission-text">
-        At the heart of everything we do lies a simple yet powerful belief: real progress is born from meaningful change...
+        At the heart of everything we do lies a simple yet powerful belief: real progress is born from meaningful change. We are not here to make noise or create projects that look good only on paper. We are here to build initiatives that inspire hope, uplift communities, and leave behind a positive, lasting impact on individuals, society, and the nation at large.
       </p>
     </div>
-    <div class="col-lg-5">
+    <div class="col-12 col-lg-5">
       <img src="{{ url_for('static', filename='community-work.jpg') }}" class="mission-img" alt="Community Work">
     </div>
   </div>
 
   <!-- Block 2 -->
   <div class="row align-items-center flex-lg-row-reverse mb-5">
-    <div class="col-lg-7 mb-3 mb-lg-0">
+    <div class="col-12 col-lg-7 mb-3 mb-lg-0">
       <p class="mission-text">
-        Our mission is crystal clear: to actively contribute to the making of a better Pakistan...
+          Our mission is crystal clear: to actively contribute to the making of a better Pakistan. A Pakistan where innovation meets responsibility, creativity meets care, and ambition meets compassion. We envision a future where every project we design and every step we take moves the country closer to becoming a land of sustainability, opportunity, and growth for generations to come.
+
       </p>
     </div>
-    <div class="col-lg-5">
+    <div class="col-12 col-lg-5">
       <img src="{{ url_for('static', filename='innovation-growth.jpg') }}" class="mission-img" alt="Innovation">
     </div>
   </div>
 
   <!-- Block 3 -->
   <div class="row align-items-center mb-5">
-    <div class="col-lg-7 mb-3 mb-lg-0">
+    <div class="col-12 col-lg-7 mb-3 mb-lg-0">
       <p class="mission-text">
-        Every effort we make is rooted in purpose. We believe that projects must go beyond short-term results...
+          Every effort we make is rooted in purpose. We believe that projects must go beyond short-term results; they must be built on values of sustainability, community growth, and social responsibility. Whether it is about empowering people through knowledge and skills, bringing forward innovative solutions to address pressing challenges, or creating opportunities that fuel progress, our goal remains the same: to deliver impact that is both real and measurable.
       </p>
+
     </div>
-    <div class="col-lg-5">
+    <div class="col-12 col-lg-5">
       <img src="{{ url_for('static', filename='impact.jpg') }}" class="mission-img" alt="Impact">
     </div>
   </div>
 
   <!-- Cards -->
   <div class="row g-4 mt-4">
-    <div class="col-md-4">
-      <div class="card-custom">
+    <div class="col-12 col-md-4">
+      <div class="card-custom h-100">
         <img src="{{ url_for('static', filename='sustainability-icon.png') }}" class="card-img">
         <h3>Sustainability</h3>
-        <p>We ensure every step we take aligns with building a greener, more sustainable future.</p>
+        <p>
+            We ensure every step we take aligns with building a greener, more sustainable future.
+        </p>
       </div>
     </div>
 
-    <div class="col-md-4">
-      <div class="card-custom">
+    <div class="col-12 col-md-4">
+      <div class="card-custom h-100">
         <img src="{{ url_for('static', filename='community-icon.png') }}" class="card-img">
         <h3>Community</h3>
         <p>Empowering communities through knowledge, care, and opportunities that uplift lives.</p>
       </div>
     </div>
 
-    <div class="col-md-4">
-      <div class="card-custom">
+    <div class="col-12 col-md-4">
+      <div class="card-custom h-100">
         <img src="{{ url_for('static', filename='innovation-icon.png') }}" class="card-img">
         <h3>Innovation</h3>
         <p>Introducing bold, creative solutions that solve real problems and drive progress.</p>
@@ -182,11 +208,10 @@
   </div>
 
   <p class="mt-5">
-    But beyond strategies, goals, and frameworks lies something far more powerful — our heart...
+    But beyond strategies, goals, and frameworks lies something far more powerful — our heart. What sets us apart is the belief that change must touch lives in a way that is deeply human. It is not just about launching initiatives; it is about creating transformations that last, that improve futures, strengthen communities, and leave behind a legacy of hope and growth.
   </p>
 
 </div>
-
 
 <section class="quote-banner">
   <p class="quote-text">
