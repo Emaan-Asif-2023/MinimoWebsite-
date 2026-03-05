@@ -47,8 +47,11 @@
       background-color: #17021f;
       display: flex;
       align-items: center;
-      padding: 0 20px;
+      padding: 15px 20px;
     }
+
+
+}
 
     .header img {
       height: 90px;
@@ -65,16 +68,7 @@
       margin: 0;
     }
 
-    /* Top-right buttons */
-    .top-right-buttons {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      z-index: 100;
-    }
+
 
     .join-btn {
       background-color: #9e8a97;
@@ -396,12 +390,40 @@
 </head>
 <body>
   <!-- Header -->
-  <div class="header">
+  <div class="header d-flex flex-wrap justify-content-between align-items-center px-3">
+
+  <div class="d-flex align-items-center">
     <img src="{{ url_for('static', filename='minimo 2.png') }}" alt="Minimo Logo">
-    <h1>MINIMO CARES</h1>
+    <h1 class="ms-2">MINIMO CARES</h1>
   </div>
 
-  <!-- Top-right buttons -->
+  <div class="d-flex gap-2 mt-2 mt-md-0">
+    <a href="/volunteerform" class="join-btn">Join Us</a>
+
+    <div class="dropdown">
+      <button class="dropbtn">Helpline Numbers ▾</button>
+
+      <div class="dropdown-content">
+        <p>Police: <a href="tel:15">15</a></p>
+        <p>Ambulance: <a href="tel:115">115</a></p>
+        <p>Child Protection Welfare Bureau: <a href="tel:1121">1121</a></p>
+        <p>Rescue Service: <a href="tel:1122">1122</a></p>
+        <p>Edhi Foundation: <a href="tel:115">115</a></p>
+        <p>Edhi Ambulance: <a href="tel:04237847050">042-37847050</a></p>
+        <p>Ambulance Halal-e-Ahmar: <a href="tel:6304702">6304702</a></p>
+        <p>Punjab Women Helpline: <a href="tel:1043">1043</a></p>
+        <p>Fire Brigade: <a href="tel:16">16</a></p>
+        <p>Punjab Youth Help Line: <a href="tel:080012145">080012145</a></p>
+        <p>Provincial Disaster Management Authority: <a href="tel:1129">1129</a></p>
+        <p>Punjab Health Line (PHL): <a href="tel:080099000">080099000</a></p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+  <!-- Top-right buttons
   <div class="top-right-buttons">
     <a href="/volunteerform" class="join-btn">Join Us</a>
 
@@ -422,6 +444,7 @@
         <p>Punjab Health Line (PHL): <a href ="tel: 080099000"> 080099000</a></p>
       </div>
     </div>
+    -->
   </div>
 
   <!-- Main Content -->
