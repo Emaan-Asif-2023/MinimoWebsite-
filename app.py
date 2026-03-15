@@ -30,6 +30,10 @@ def init_db():
             conn.executescript(f.read())
         conn.close()
 
+#ping
+@app.route("/ping")
+def ping():
+    return "alive", 200
 @app.route("/initdb")
 def run_initdb():
     """Initialize database only once."""
