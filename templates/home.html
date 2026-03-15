@@ -234,8 +234,14 @@
       margin: 0 auto 50px auto;
     }
 
-    .row-1 { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
-    .row-2 { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+
+    .row-1 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .row-2 {
+      grid-template-columns: repeat(5, 1fr);
+    }
 
     .team-member img {
       width: 150px;
@@ -538,6 +544,11 @@
         <img src="{{ url_for('static', filename='salaar.jpg') }}" alt="Member 8">
         <h3>Muhammad Salaar</h3>
         <p>Community Outreach and Event Manager</p>
+      </div>
+      <div class="team-member">
+        <img src="{{ url_for('static', filename='member9.jpg') }}" alt="Member 9">
+        <h3>Minal Baig</h3>
+        <p>Mental Health Liason</p>
       </div>
     </div>
   </div>
