@@ -286,17 +286,20 @@
       overflow: hidden;
     }
 
-    .slides {
-      display: none;
-      animation: fade 1000s ease-in-out;
 
+    .slides {
+
+      animation: fade 5000s ease-in-out;
+      text-align: center;
     }
+
 
     .slides img {
       width: 100%;
       height: 350px;
       object-fit: cover;
       border-radius: 10px;
+
     }
 
     .prev, .next {
@@ -320,9 +323,10 @@
     .next { right: 20px; }
 
     @keyframes fade {
-      from { opacity: 0.4 }
+      from { opacity: 0.8 }
       to { opacity: 1 }
     }
+
 
     /* Blog Section */
     .blog-section {
@@ -402,6 +406,36 @@
 
     .footer-bottom a { color: #ccc; text-decoration: none; margin: 0 8px; transition: color 0.3s ease; }
     .footer-bottom a:hover { color: white; }
+
+    .projects-section a {
+      text-decoration: none;
+      color: #4B007D;
+    }
+
+    .projects-section a:hover {
+      text-decoration: none;
+      color: #4B007D;
+    }
+
+
+    .slides h3 {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .slides h3 {
+        font-size: 16px;
+        padding: 0 40px;
+      }
+    }
+    .project-title {
+      text-decoration: none;
+    }
+
+    .project-title h3 {
+      color: #4B007D;
+     }
 
   </style>
 </head>
@@ -508,14 +542,14 @@
         <p>Founder</p>
       </div>
       <div class="team-member">
-        <img src="{{ url_for('static', filename='hashir.jpg') }}" alt="Member 2">
+        <img src="{{ url_for('static', filename='hashir2.jpg') }}" alt="Member 2">
         <h3>Muhammad Hashir</h3>
         <p>Founder</p>
       </div>
       <div class="team-member">
         <img src="{{ url_for('static', filename='hania4.jpg') }}" alt="Member 3">
         <h3>Hania Farooq</h3>
-        <p>Public Health Liason</p>
+        <p>Public Health Liaison</p>
       </div>
       <div class="team-member">
         <img src="{{ url_for('static', filename='emaan5.jpg') }}" alt="Member 4">
@@ -546,9 +580,9 @@
         <p>Community Outreach and Event Manager</p>
       </div>
       <div class="team-member">
-        <img src="{{ url_for('static', filename='member9.jpg') }}" alt="Member 9">
+        <img src="{{ url_for('static', filename='minal.jpg') }}" alt="Member 9">
         <h3>Minal Baig</h3>
-        <p>Mental Health Liason</p>
+        <p>Mental Health Liaison</p>
       </div>
     </div>
   </div>
@@ -560,8 +594,11 @@
     <div class="carousel">
       <div class="slides fade">
         <img src="{{ url_for('static', filename='project1.jpg') }}" alt="Project 1">
-        <a href="/project1"><h3 style="color: #4B007D;">Climate change awareness and plantation</h3></a>
+         <a href="/project1" class="project-title">
+          <h3>Climate change awareness and plantation</h3>
+        </a>
       </div>
+
 
       <div class="slides fade">
         <img src="{{ url_for('static', filename='project2.jpg') }}" alt="Project 2">
