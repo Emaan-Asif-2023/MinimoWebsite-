@@ -179,12 +179,23 @@
 
     <!-- Image Gallery using Bootstrap -->
     <div class="row g-3">
-      {% for i in range(1, 25) %}
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <img src="{{ url_for('static', filename='plantation' ~ i ~ '.jpg') }}"
-               alt="Activity {{ i }}" class="img-fluid rounded gallery-img">
-        </div>
-      {% endfor %}
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <img src="{{ url_for('static', filename='phy1.jpeg') }}"
+         alt="Activity 1" class="img-fluid rounded gallery-img">
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <img src="{{ url_for('static', filename='phy2.jpeg') }}"
+         alt="Activity 2" class="img-fluid rounded gallery-img">
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <img src="{{ url_for('static', filename='phy3.jpeg') }}"
+         alt="Activity 3" class="img-fluid rounded gallery-img">
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <img src="{{ url_for('static', filename='phy4.jpeg') }}"
+         alt="Activity 4" class="img-fluid rounded gallery-img">
+      </div>
+
     </div>
 
     <a href="/home" class="back-btn">← Back to Home</a>
