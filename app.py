@@ -98,6 +98,18 @@ def project4():
 def project5():
     return render_template("project5.html")
 
+@app.route('/project6')
+def project6():
+    return render_template("project6.html")
+
+@app.route('/project7')
+def project7():
+    return render_template("project7.html")
+
+@app.route('/project8')
+def project8():
+    return render_template("project8.html")
+
 # EMAIL FUNCTIONS USING SENDGRID
 RESEND_KEY = os.environ.get("RESEND_KEY")
 
