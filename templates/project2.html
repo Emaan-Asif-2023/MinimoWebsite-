@@ -67,7 +67,7 @@
     .gallery img {
       width: 100%;
       height: 220px;
-      object-fit: cover;
+      object-fit: contain;
       border-radius: 12px;
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -149,11 +149,30 @@
 
     <!-- Bootstrap Responsive Gallery -->
     <div class="row g-3 gallery my-4">
-      {% for i in range(1, 25) %}
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <img src="{{ url_for('static', filename='plantation' ~ i ~ '.jpg') }}" alt="Activity {{ i }}">
-        </div>
-      {% endfor %}
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <img src="{{ url_for('static', filename='cc1.PNG') }}"
+         alt="Activity 1" class="img-fluid rounded gallery-img">
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <img src="{{ url_for('static', filename='cc2.PNG') }}"
+         alt="Activity 1" class="img-fluid rounded gallery-img">
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <img src="{{ url_for('static', filename='cc3.PNG') }}"
+         alt="Activity 1" class="img-fluid rounded gallery-img">
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <img src="{{ url_for('static', filename='cc4.jpeg') }}"
+         alt="Activity 1" class="img-fluid rounded gallery-img">
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <img src="{{ url_for('static', filename='cc5.jpeg') }}"
+         alt="Activity 1" class="img-fluid rounded gallery-img">
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <img src="{{ url_for('static', filename='cc7.jpeg') }}"
+         alt="Activity 1" class="img-fluid rounded gallery-img">
+      </div>
     </div>
 
     <div class="text-center">

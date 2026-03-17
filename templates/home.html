@@ -174,14 +174,22 @@
       line-height: 1.6;
       margin-bottom: 20px;
     }
-
     .image-section {
-      background: url("{{ url_for('static', filename='aboutus_pic.jpg') }}") center/cover no-repeat;
+      background: url("{{ url_for('static', filename='mini_mo.jpeg') }}") center/cover no-repeat;
       border-radius: 10px;
       height: 400px;
       min-height: 250px;
+      margin-top: -70px;
+      padding-left: 30px;
     }
 
+
+    @media (max-width: 991px) {
+      .image-section {
+        margin-top: 20px;
+        padding-left: 0;
+      }
+    }
     .about-btn {
       display: inline-block;
       background-color: #5c030c;
@@ -295,11 +303,15 @@
 
 
     .slides img {
-      width: 100%;
-      height: 350px;
-      object-fit: cover;
-      border-radius: 10px;
-
+        width: 100%;
+        max-height: 180px;
+        object-fit: contain;
+        border-radius: 10px;
+    }
+    @media (max-width: 768px) {
+        .slides img {
+            max-height: 140px;
+        }
     }
 
     .prev, .next {
@@ -443,6 +455,15 @@
       }
 
     }
+    .slides a {
+      text-decoration: none;
+      color: #4B007D;
+      display: block;
+    }
+
+    .slides a:hover h3 {
+      text-decoration: underline;
+    }
 
   </style>
 </head>
@@ -507,10 +528,11 @@
 
   <!-- Main Content -->
   <div class="container main-content">
-    <div class="row">
-      <div class="col-lg-8 col-md-7 text-section">
-        <h2>ABOUT US</h2>
-        <p>
+  <div class="row align-items-center">
+    <!-- Text Section -->
+    <div class="col-lg-8 col-md-12 order-1 order-lg-1 text-section">
+      <h2>ABOUT US</h2>
+      <p>
         We are a group of passionate individuals united by a shared purpose:
         to create change that truly matters. Coming from diverse backgrounds,
         we work together to design and drive projects that inspire, uplift,
@@ -520,10 +542,10 @@
         and every effort reflects our belief that real change begins when people
         come together with heart and vision.
       </p>
-        <a href="/about-us" class="about-btn">View More</a>
+      <a href="/about-us" class="about-btn">View More</a>
 
-        <h2>OUR MISSION</h2>
-        <p>
+      <h2>OUR MISSION</h2>
+      <p>
         We believe in driving projects that truly make a difference —
         projects that inspire, uplift, and create a positive, lasting impact.
         Our mission is to contribute towards building a better Pakistan,
@@ -532,11 +554,13 @@
         remains on sustainability, community growth, and meaningful change,
         because real progress begins when efforts are made with heart.
       </p>
-        <a href="/ourmission" class="about-btn">View More</a>
-      </div>
-      <div class="col-lg-4 col-md-5 image-section"></div>
+      <a href="/ourmission" class="about-btn">View More</a>
     </div>
+
+    <!-- Image Section -->
+    <div class="col-lg-4 col-md-12 order-2 order-lg-2 image-section"></div>
   </div>
+</div>
 
   <!-- Team Section -->
   <div class="team-section">
@@ -600,47 +624,62 @@
 
     <div class="carousel">
       <div class="slides fade">
-        <img src="{{ url_for('static', filename='project1.jpg') }}" alt="Project 1">
-         <a href="/project1" class="project-title">
+        <a href="/project1">
+          <img src="{{ url_for('static', filename='plt7.jpeg') }}" alt="Project 1">
           <h3>Climate change awareness and plantation</h3>
         </a>
       </div>
 
-
       <div class="slides fade">
-        <img src="{{ url_for('static', filename='project2.jpg') }}" alt="Project 2">
-        <a href="/project2"><h3 style="color: #4B007D;">Career Counselling Session</h3></a>
-      </div>
+        <a href="/project2">
+          <img src="{{ url_for('static', filename='cc5.jpeg') }}" alt="Project 2">
+          <h3>Career Counselling Session</h3>
+        </a>
+    </div>
 
-      <div class="slides fade">
-        <img src="{{ url_for('static', filename='project3.jpg') }}" alt="Project 3">
-        <a href="/project3"><h3 style="color: #4B007D;">Kohrian Plantation Drive</h3></a>
-      </div>
+  <div class="slides fade">
+    <a href="/project3">
+      <img src="{{ url_for('static', filename='koh2.jpeg') }}" alt="Project 3">
+      <h3>Kohrian Plantation Drive</h3>
+    </a>
+  </div>
 
-      <div class="slides fade">
-        <img src="{{ url_for('static', filename='project4.jpg') }}" alt="Project 4">
-        <a href="/project4"><h3 style="color: #4B007D;">Free Physical Therapy Session at Old Age Home</h3></a>
-      </div>
+  <div class="slides fade">
+    <a href="/project4">
+      <img src="{{ url_for('static', filename='phy3.jpeg') }}" alt="Project 4">
+      <h3>Free Physical Therapy Session at Old Age Home</h3>
+    </a>
+  </div>
 
-      <div class="slides fade">
-        <img src="{{ url_for('static', filename='project5.jpg') }}" alt="Project 5">
-        <a href="/project5"><h3 style="color: #4B007D;">Minimo Birthday celebration</h3></a>
-      </div>
+  <div class="slides fade">
+    <a href="/project5">
+      <img src="{{ url_for('static', filename='bday2.jpeg') }}" alt="Project 5">
+      <h3>Minimo Birthday Celebration</h3>
+    </a>
+  </div>
 
-       <div class="slides fade">
-        <img src="{{ url_for('static', filename='project5.jpg') }}" alt="Project 6">
-        <a href="/project6"><h3 style="color: #4B007D;">Reponse Training Workshop</h3></a>
-      </div>
+  <div class="slides fade">
+    <a href="/project6">
+      <img src="{{ url_for('static', filename='fap4.jpeg') }}" alt="Project 6">
+      <h3>Response Training Workshop</h3>
+    </a>
+  </div>
 
-       <div class="slides fade">
-        <img src="{{ url_for('static', filename='project5.jpg') }}" alt="Project 7">
-        <a href="/project7"><h3 style="color: #4B007D;">Anti Bullying and Mental Health Awareness 1</h3></a>
-      </div>
+  <div class="slides fade">
+    <a href="/project7">
+      <img src="{{ url_for('static', filename='ljt1.jpeg') }}" alt="Project 7">
+      <h3>Anti Bullying and Mental Health Awareness 1</h3>
+    </a>
+  </div>
 
-       <div class="slides fade">
-        <img src="{{ url_for('static', filename='project5.jpg') }}" alt="Project 8">
-        <a href="/project8"><h3 style="color: #4B007D;">Anti Bullying and Mental Health Awareness 2</h3></a>
-      </div>
+  <div class="slides fade">
+    <a href="/project8">
+      <img src="{{ url_for('static', filename='lcb11.PNG') }}" alt="Project 8">
+      <h3>Anti Bullying and Mental Health Awareness 2</h3>
+    </a>
+  </div>
+
+
 
 
 
